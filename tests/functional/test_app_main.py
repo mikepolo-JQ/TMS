@@ -16,14 +16,14 @@ def test(browser, request):
 
 
 def validate_title(page: MainPage):
-    assert "Z37" in page.title
+    assert "some text" in page.title
 
 
 def validate_content(page: MainPage):
     assert page.h1.tag_name == "h1"
-    assert page.h1.text == "Z37 study project"
+    assert page.h1.text == "My study on TeachMeSkills"
     assert page.p.tag_name == "p"
-    assert page.p.text == "This is a study project."
+    assert page.p.text == "This is dfnjknfdkjfndkjnfdjbngk"
 
     html = page.html
     assert "<hr>" in html
