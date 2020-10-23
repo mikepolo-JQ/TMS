@@ -17,6 +17,8 @@ def application(environ, start_response):
     }
     payload = read_static(file_name)
 
+    
+
     start_response(status, list(headers.items()))
     yield payload
 
