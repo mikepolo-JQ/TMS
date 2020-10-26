@@ -8,8 +8,8 @@ def application(environ, start_response):
     url = environ["PATH_INFO"]
 
     file_names = {
-        "/new_list/": "styles.css",
-        "/logo.png/": "logo.png",
+        "/styles/": "assets/styles.css",
+        "/logo/": "logo.png",
         "/": "index.html",
         "/favicon.ico": "favicon.ico"
         # None: generate_404(environ)
