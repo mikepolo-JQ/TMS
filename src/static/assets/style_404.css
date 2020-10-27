@@ -40,19 +40,24 @@ body{
 
 .intro__suptitle{
     margin-bottom: 10px;
-    font-family: 'Kaushan Script', cursive;
+    /*font-family: 'Kaushan Script', cursive;*/
     color: red;
     font-size: 50px;
 }
 
 .intro__title{
-    /*font-family: 'Kaushan Script', cursive;*/
-    font-size: 90px;
-    font-weight: 700;
+    font-size: 60px;
+    font-weight: bold;
     color: red;
     text-transform: uppercase;
 
     line-height: 1;
+}
+
+.url{
+    font-size: 55px;
+    color:white;
+    font-style: italic;
 }
 
 .intro__title:after{
