@@ -39,5 +39,5 @@ def validate_content(page: MainPage):
     # assert page.a.tag_name == "a"
     # assert page.a.text == "Learn More"
 
-    html = page.html
-    assert "<hr>" in html
+    # html = page.html
+    # assert "<hr>" in html
