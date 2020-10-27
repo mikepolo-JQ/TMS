@@ -12,7 +12,7 @@ def application(environ, start_response):
         "/logo/": "logo.png",
         "/": "index.html",
         "/favicon.ico": "favicon.ico",
-        "/style_404/": "assets/style_404.css"
+        "/style_404/": "assets/style_404.css",
     }
 
     file_name = file_names.get(url, "page_not_found.html")
