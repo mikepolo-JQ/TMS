@@ -12,7 +12,7 @@ body{
 /* container */
 .container{
     width: 100%;
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
@@ -42,12 +42,12 @@ body{
     margin-bottom: 10px;
     font-family: 'Kaushan Script', cursive;
     color: #00a2e8;
-    font-size: 62px;
+    font-size: 50px;
 }
 
 .intro__title{
     font-family: 'Kaushan Script', cursive;
-    font-size: 100px;
+    font-size: 80px;
     font-weight: 700;
     color: #00a2e8;
     text-transform: uppercase;
@@ -69,13 +69,13 @@ body{
 .button{
     display: inline-block;
     vertical-align: top;
-    padding: 8px 30px;
+    padding: 8px 25px;
 
-    border: 5px solid #fff;
+    border: 3px solid #fff;
 
     color: white;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
     text-decoration: none;
 
@@ -106,14 +106,14 @@ body{
 }
 
 .header__logo{
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
     color: white;
 }
 
 /* NAV */
 .nav{
-    font-size: 16px;
+    font-size: 14px;
     text-transform: uppercase;
 }
 
@@ -169,12 +169,11 @@ h1, h2, h3, h4, h5, h6{
 .slider__inner{
     display: flex;
     justify-content: space-between;
-
 }
 
 .item__slider{
     width: 20%;
-    padding: 20px 0;
+    padding: 10px 0 20px 0;
     border-top: 4px solid #fff;
     opacity: .4;
     position: relative;

@@ -8,11 +8,12 @@ def application(environ, start_response):
     url = environ["PATH_INFO"]
 
     file_names = {
-        "/styles/": "assets/styles.css",
+        "/styles": "assets/styles.css",
         "/logo/": "logo.png",
         "/": "index.html",
         "/favicon.ico": "favicon.ico",
-        "/style_404/": "assets/style_404.css",
+        "/style_404": "assets/style_404.css",
+        "/404": "page_not_found.html"
     }
 
     file_name = file_names.get(url, "page_not_found.html")
