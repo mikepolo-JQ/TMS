@@ -24,6 +24,18 @@ def validate_content(page: MainPage):
     assert page.h1.text == "MIKEPOLO SITE"
     assert page.h2.tag_name == "h2"
     assert page.h2.text == "Welcome to"
+
+    assert page.a.tag_name == "a"
+    assert page.a.text == "About"
+    assert page.a.tag_name == "a"
+    assert page.a.text == "Service"
+    assert page.a.tag_name == "a"
+    assert page.a.text == "Work"
+    assert page.a.tag_name == "a"
+    assert page.a.text == "Block"
+    assert page.a.tag_name == "a"
+    assert page.a.text == "Contact"
+
     assert page.a.tag_name == "a"
     assert page.a.text == "Learn More"
 
