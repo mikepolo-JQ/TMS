@@ -25,19 +25,19 @@ def validate_content(page: MainPage):
     assert page.h2.tag_name == "h2"
     assert page.h2.text == "Welcome to"
 
-    assert page.a.tag_name == "a"
-    assert page.a.text == "ABOUT"
-    assert page.a.tag_name == "a"
-    assert page.a.text == "SERVICE"
-    assert page.a.tag_name == "a"
-    assert page.a.text == "WORK"
-    assert page.a.tag_name == "a"
-    assert page.a.text == "BLOCK"
-    assert page.a.tag_name == "a"
-    assert page.a.text == "CONTACT"
-
-    assert page.a.tag_name == "a"
-    assert page.a.text == "Learn More"
+    # assert page.a.tag_name == "a"
+    # assert page.a.text == "ABOUT"
+    # assert page.a.tag_name == "a"
+    # assert page.a.text == "SERVICE"
+    # assert page.a.tag_name == "a"
+    # assert page.a.text == "WORK"
+    # assert page.a.tag_name == "a"
+    # assert page.a.text == "BLOCK"
+    # assert page.a.tag_name == "a"
+    # assert page.a.text == "CONTACT"
+    #
+    # assert page.a.tag_name == "a"
+    # assert page.a.text == "Learn More"
 
     html = page.html
     assert "<hr>" in html
