@@ -1,0 +1,158 @@
+body{
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    color: #333;
+}
+*,
+*:before,
+*:after{
+    box-sizing: border-box;
+}
+/* container */
+.container{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* intro */
+.intro{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background: #262835
+    center
+    no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+/**/
+.intro_inner{
+    width: 100%;
+    max-width: 840px;
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+.intro__suptitle{
+    margin-bottom: 10px;
+    font-family: 'Kaushan Script', cursive;
+    color: red;
+    font-size: 62px;
+}
+
+.intro__title{
+    /*font-family: 'Kaushan Script', cursive;*/
+    font-size: 100px;
+    font-weight: 700;
+    color: red;
+    text-transform: uppercase;
+
+    line-height: 1;
+}
+
+.intro__title:after{
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    margin: 20px auto;
+
+    background-color: white;
+}
+
+/* Button */
+.button{
+    display: inline-block;
+    vertical-align: top;
+    padding: 8px 30px;
+
+    border: 5px solid #fff;
+
+    color: white;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+
+    transition: background .1s linear,
+    color .1s linear;
+}
+.button:hover{
+    background-color: white;
+    color: red;
+}
+
+/* header */
+.header{
+    width: 100%;
+    padding-top: 30px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.header__inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo{
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
+
+/* NAV */
+.nav{
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.nav__link{
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 20px;
+    position: relative;
+
+    color: #fff;
+    text-decoration: None;
+
+    transition: color .2s linear;
+}
+
+.nav__link:after{
+    content: "";
+    width: 100%;
+    height: 3px;
+    display: none;
+
+    background-color: red;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    transition: color .2s linear;
+}
+
+.nav__link:hover{
+    color: red;
+}
+.nav__link:hover:after{
+    display: block;
+    /*color: #00a2e8;*/
+}
+
+h1, h2, h3, h4, h5, h6{
+    margin: 0;
+}
+
