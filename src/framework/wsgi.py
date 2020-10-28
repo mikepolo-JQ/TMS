@@ -1,30 +1,25 @@
-from mimetypes import guess_type
+from handlers.ico import handler_ico
+from handlers.index import handler_index
+from handlers.not_found import handler_404
+from handlers.styles import handler_styles
+from handlers.styles_404 import handler_styles_404
 
-from framework.consts import DIR_STATIC
+handlers = {
+    "/": handler_index,
+    "/styles": handler_styles,
+    "/favicon.ico": handler_ico,
+    "/style_404": handler_styles_404,
+    # "/logo/": "logo.png",
+    # "/404": "page_not_found.html",
+}
 
 
 def application(environ, start_response):
     url = environ["PATH_INFO"]
 
-    file_names = {
-        "/new_list/": "styles.css",
-        "/logo.png/": "logo.png",
-    }
-    file_name = file_names.get(url, "index.html")
-    status = "200 OK"
-    headers = {
-        "Content-type": guess_type(file_name)[0],
-    }
-    payload = read_static(file_name)
+    handler = handlers.get(url, handler_404)
+
+    status, headers, payload = handler(environ)
 
     start_response(status, list(headers.items()))
     yield payload
-
-
-def read_static(file_name: str) -> bytes:
-    path = DIR_STATIC / file_name
-
-    with path.open("rb") as fp:
-        payload = fp.read()
-
-    return payload

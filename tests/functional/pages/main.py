@@ -6,4 +6,7 @@ from .abstract import PageObject
 
 class MainPage(PageObject):
     h1 = PageElement(By.CSS_SELECTOR, "h1")
-    p = PageElement(By.CSS_SELECTOR, "p")
+    h2 = PageElement(By.CSS_SELECTOR, "h2")
+    # p = PageElement(By.CSS_SELECTOR, "p")
+    # a = PageElement(By.CSS_SELECTOR, "a")
+    # nav = PageElement(By.CSS_SELECTOR, "nav")
