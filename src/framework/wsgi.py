@@ -10,7 +10,6 @@ handlers = {
     "/favicon.ico": handler_ico,
     "/style_404": handler_styles_404,
     # "/logo/": "logo.png",
-    
     # "/404": "page_not_found.html",
 }
 
