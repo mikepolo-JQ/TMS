@@ -60,6 +60,11 @@ body{
     font-style: italic;
 }
 
+.pin{
+    font-size: 55px;
+    color:#00a2e8;
+}
+
 .intro__title:after{
     content: "";
     display: block;

@@ -1,9 +1,12 @@
+from random import randint
+
 from framework.utils import read_static
 from handlers.response import ResponseT
 
 
 def handler_404(environ) -> ResponseT:
     url = environ["PATH_INFO"]
+    pin = randint(1, 1000)
     base_html = read_static("_base.html").decode()
     body_404 = f"""
             <div class="header">
@@ -28,7 +31,9 @@ def handler_404(environ) -> ResponseT:
                         <h2 class="intro__suptitle">Ooops...</h2>
                         <h1 class="intro__title">Your path 
                             <span class="url">{url}</span> 
-                            not found</h1>
+                            not found. 
+                            <span class="pin">Pin: {pin}</span>
+                            </h1>                           
         
                         <a href="/" class="button">< Go home</a>
                     </div>
