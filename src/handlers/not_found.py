@@ -40,7 +40,7 @@ def handler_404(environ) -> ResponseT:
                 </div>
         
             </div>"""
-    payload = base_html.format(styles_path="/style_404", body=str(body_404))
+    payload = base_html.format(styles="/style_404", body=str(body_404))
     payload = payload.encode()
     status = "404 Not Found"
     headers = {

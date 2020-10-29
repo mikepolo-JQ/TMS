@@ -58,11 +58,13 @@ body{
     font-size: 55px;
     color:white;
     font-style: italic;
+    text-transform: none;
 }
 
 .pin{
     font-size: 55px;
     color:#00a2e8;
+    text-transform: none;
 }
 
 .intro__title:after{
