@@ -1,6 +1,7 @@
-from framework.utils import read_assets
-from framework.types import ResponseT
 from mimetypes import guess_type
+
+from framework.types import ResponseT
+from framework.utils import read_assets
 
 
 def handler_styles(_request, file_name) -> ResponseT:

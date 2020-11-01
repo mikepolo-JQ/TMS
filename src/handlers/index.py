@@ -1,5 +1,5 @@
-from framework.utils import read_static
 from framework.types import ResponseT
+from framework.utils import read_static
 
 
 def handler_index(_request, _file_name) -> ResponseT:

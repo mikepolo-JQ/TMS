@@ -1,8 +1,9 @@
+from framework.types import HandlerRequest
+from framework.types import RequestT
 from handlers.index import handler_index
-from handlers.system_handlers.not_found import handler_404
-from framework.types import RequestT, HandlerRequest
 from handlers.static import handler_static
 from handlers.styles import handler_styles
+from handlers.system_handlers.not_found import handler_404
 
 # handlers = {
 #     "/": handler_index,

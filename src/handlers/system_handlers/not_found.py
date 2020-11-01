@@ -1,8 +1,8 @@
 from random import randint
 
-from framework.utils import read_static
 from framework.types import RequestT
 from framework.types import ResponseT
+from framework.utils import read_static
 
 
 def handler_404(request, _file_name) -> ResponseT:
