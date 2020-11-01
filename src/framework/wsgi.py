@@ -26,7 +26,7 @@ handlers = {
 def application(environ: dict, start_response):
     path = environ["PATH_INFO"]
 
-    ResponcePath = handlers.get(path, HandlerRequest(handler_404, ""))
+    handler_info = handlers.get(path, HandlerRequest(handler_404, ""))
 
     request_headers = {
         key[5:]: environ[key]
@@ -37,7 +37,7 @@ def application(environ: dict, start_response):
         method=environ["REQUEST_METHOD"], headers=request_headers, path=path
     )
 
-    response = ResponcePath.handler(request, ResponcePath.file_name)
+    response = handler_info.handler(request, handler_info.file_name)
 
     start_response(response.status, list(response.headers.items()))
     yield response.payload

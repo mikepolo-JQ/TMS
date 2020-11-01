@@ -188,18 +188,23 @@ h1, h2, h3, h4, h5, h6{
 
 }
 
+tr{
+    width: 100%;
+}
+
 .key{
-    /*border-bottom: 1px solid #ddd;*/
-    /*border-right: 1px solid #ddd;*/
     font-weight: bold;
+    /*color: #e0a044;*/
     padding-bottom: 30px;
     /*margin-bottom: 30px;*/
 
 }
 
-.value{
+.value {
     /*border-bottom: 1px solid #ddd;*/
     /*border-bottom: 1px solid #ddd;*/
+
+    padding-left: 20px;
     padding-bottom: 30px;
     text-align: center;
 }
