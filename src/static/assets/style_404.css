@@ -168,3 +168,40 @@ h1, h2, h3, h4, h5, h6{
     margin: 0;
 }
 
+/* request headers */
+.headers{
+    background: #262835;
+
+    color: white;
+    font-size: 14px;
+    /*font-weight: bold;*/
+}
+
+.header_h2{
+    border-top: 1px solid #a4b3c8;
+    text-transform: uppercase;
+    padding: 40px;
+
+    text-align: center;
+    font-size: 30px;
+    color: #00a2e8;
+
+}
+
+.key{
+    /*border-bottom: 1px solid #ddd;*/
+    /*border-right: 1px solid #ddd;*/
+    font-weight: bold;
+    padding-bottom: 30px;
+    /*margin-bottom: 30px;*/
+
+}
+
+.value{
+    /*border-bottom: 1px solid #ddd;*/
+    /*border-bottom: 1px solid #ddd;*/
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+
