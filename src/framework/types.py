@@ -15,3 +15,9 @@ class RequestT:
     method: str
     path: str
     headers: dict
+
+
+class HandlerRequest:
+    def __init__(self, handler, file_name):
+        self.handler = handler
+        self.file_name = file_name

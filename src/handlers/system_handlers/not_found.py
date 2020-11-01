@@ -1,11 +1,11 @@
 from random import randint
 
 from framework.utils import read_static
-from handlers.response import RequestT
-from handlers.response import ResponseT
+from framework.types import RequestT
+from framework.types import ResponseT
 
 
-def handler_404(request) -> ResponseT:
+def handler_404(request, _file_name) -> ResponseT:
     url = request.path
     pin = randint(1, 1000)
     base_html = read_static("_base.html").decode()
