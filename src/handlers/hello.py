@@ -13,7 +13,7 @@ def handle_hello(request: RequestT):
     hello_html = read_static("hello.html").content.decode()
 
     document = hello_html.format(
-        name_handler=name or "anon",
+        name_handler=name or "Anon",
         name_value=name or "",
         address_handler=address or "XZ",
         address_value=address or "",

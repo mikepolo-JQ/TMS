@@ -1,24 +1,34 @@
 <div class="intro">
     <div class="container">
         <div class="intro_inner">
-            <div class="hello">Hello, {name_handler}!</div>
-            <div class="hello">Your here {address_handler}!</div>
+            <div class="hello">Hello,
+                <span class="input_item"> {name_handler}</span>!
+            </div>
+            <div class="hello">Your location is
+                <span class="input_item"> {address_handler}</span>.
+            </div>
 
-            <form method="post">
-                <div>
-                <label for="name_id">Name:</label>
-                <input id="name_id" name="name" placeholder="What is your name?" type="text" value="{name_value}">
-                </div>
+            <div class="container_form">
+                <form method="post">
+                    <p>
+                    <label for="name_id">Name:</label>
+                    <input id="name_id" name="name" placeholder="What is your name?" type="text" value="{name_value}">
+                    </p>
 
-                <div>
-                <label for="address_id">Address:</label>
-                <input id="address_id" name="address" placeholder="Where are you?" type="text" value="{address_value}">
-                </div>
+                    <p>
+                    <label for="address_id">Address:</label>
+                    <input id="address_id" name="address" placeholder="Where are you?" type="text" value="{address_value}">
+                    </p>
 
-                <button>Send</button>
-            </form>
+                    <p>
+                    <button>Send</button>
+                    </p>
+<!--                    <a href="/" class="button">< Go home</a>-->
 
+                </form>
+            </div>
 
         </div>
     </div>
 </div>
+

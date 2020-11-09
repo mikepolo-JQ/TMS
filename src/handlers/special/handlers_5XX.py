@@ -19,21 +19,25 @@ def handle_error(_request: RequestT = None) -> ResponseT:
     )
 
     document = f"""
-            <h1>WASTED</h1>
-            <hr>
-            <p>
-            {filenames}
-            </p>
-            <p>
-            {error_class.__name__}: {error}
-            </p>
+    <div class="intro">
+        <div class="container">
+            <div class="intro_inner">
+                <h1 color="red">WASTED</h1>
+                <hr>
+                <p>{filenames}</p>
+                <p>{error_class.__name__}: {error}</p>
+
+                <a href="/" class="button">< Go home</a>
+            </div>
+        </div>
+    </div>
         """
 
-    base_html = read_static("_base.html")
-
-    document = base_html.content.decode().format(styles="/s/styles.css", body=document)
+    base = read_static("_base.html")
+    base_html = base.content.decode()
+    document = base_html.format(styles="/s/styles.css", body=document)
 
     payload = document.encode()
     status = build_status(500)
-    headers = {"Content-type": base_html.content_type}
+    headers = {"Content-type": base.content_type}
     return ResponseT(status, headers, payload)
