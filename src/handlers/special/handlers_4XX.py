@@ -2,13 +2,13 @@ from random import randint
 
 from framework.types import RequestT
 from framework.types import ResponseT
-from framework.utils import read_static
+from framework.utils import read_static, build_status
 
 
-def handler_404(request, _file_name) -> ResponseT:
+def handle_404(request, _file_name: str = None) -> ResponseT:
     url = request.path
     pin = randint(1, 1000)
-    base_html = read_static("_base.html").decode()
+    base_html = read_static("_base.html")
 
     body_404 = f"""
             <div class="header">
@@ -39,8 +39,7 @@ def handler_404(request, _file_name) -> ResponseT:
         
                         <a href="/" class="button">< Go home</a>
                     </div>
-                </div>
-            
+                </div>            
             </div>
 
             <div class="headers"> 
@@ -52,11 +51,11 @@ def handler_404(request, _file_name) -> ResponseT:
                 </div>
             </div>"""
 
-    payload = base_html.format(styles="/style_404", body=str(body_404))
+    payload = base_html.content.decode().format(styles="/s/style_404.css", body=str(body_404))
     payload = payload.encode()
-    status = "404 Not Found"
+    status = build_status(404)
     headers = {
-        "Content-type": "text/html",
+        "Content-type": base_html.content_type,
     }
 
     return ResponseT(status, headers, payload)
@@ -64,13 +63,12 @@ def handler_404(request, _file_name) -> ResponseT:
 
 def request_headers_print(request: RequestT) -> str:
 
-    header = """
+    table_headers = ""
+    for key in sorted(request.headers):
+        table_headers += """
         <tr>
             <td class="key">{key}</td>
             <td class="value">{value}</td>            
         </tr>
-        """
-    table_headers = ""
-    for key in sorted(request.headers):
-        table_headers += header.format(key=key, value=request.headers[key])
+        """.format(key=key, value=request.headers[key])
     return table_headers

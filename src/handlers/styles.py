@@ -4,7 +4,7 @@ from framework.types import ResponseT
 from framework.utils import read_assets
 
 
-def handler_styles(_request, file_name) -> ResponseT:
+def handle_styles(_request, file_name) -> ResponseT:
     payload = read_assets(file_name)
     status = "200 OK"
     headers = {

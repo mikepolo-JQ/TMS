@@ -1,32 +1,15 @@
-from framework.types import HandlerRequest
+from framework.errors import NotFound
 from framework.types import RequestT
-from handlers.index import handler_index
-from handlers.static import handler_static
-from handlers.styles import handler_styles
-from handlers.system_handlers.not_found import handler_404
-
-# handlers = {
-#     "/": handler_index,
-#     "/styles": handler_styles,
-#     "/favicon.ico": handler_ico,
-#     "/style_404": handler_styles_404,
-#     # "/logo/": "logo.png",
-#     # "/404": "page_not_found.html",
-# }
-
-handlers = {
-    "/": HandlerRequest(handler_index, "index.html"),
-    "/styles": HandlerRequest(handler_styles, "styles.css"),
-    "/favicon.ico": HandlerRequest(handler_static, "favicon.ico"),
-    "/style_404": HandlerRequest(handler_styles, "style_404.css"),
-    # "/logo/": "logo.png",
-}
+from handlers import special
+from handlers import get_handler_and_kwargs
 
 
 def application(environ: dict, start_response):
-    path = environ["PATH_INFO"]
 
-    handler_info = handlers.get(path, HandlerRequest(handler_404, ""))
+    path = environ["PATH_INFO"]
+    method = environ["REQUEST_METHOD"]
+    query = environ.get("QUERY_STRING")
+    handler, kwargs = get_handler_and_kwargs(path)
 
     request_headers = {
         key[5:]: environ[key]
@@ -34,10 +17,20 @@ def application(environ: dict, start_response):
     }
 
     request = RequestT(
-        method=environ["REQUEST_METHOD"], headers=request_headers, path=path
+        method=method,
+        kwargs=kwargs,
+        headers=request_headers,
+        path=path,
+        query=query,
     )
+    try:
+        response = handler(request)
 
-    response = handler_info.handler(request, handler_info.file_name)
+    except NotFound:
+        response = special.handle_404(request)
+
+    except Exception:
+        response = special.handle_error()
 
     start_response(response.status, list(response.headers.items()))
     yield response.payload
