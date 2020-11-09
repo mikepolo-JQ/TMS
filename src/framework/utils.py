@@ -5,7 +5,6 @@ from pathlib import Path
 from framework.consts import DIR_ASSETS
 from framework.consts import DIR_STATIC
 
-
 # def read_static(file_name: str) -> bytes:
 #     path = DIR_STATIC / file_name
 #

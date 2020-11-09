@@ -1,6 +1,7 @@
 import dataclasses
+from typing import Callable
 from typing import NamedTuple
-from typing import Optional, Callable
+from typing import Optional
 
 
 class ResponseT(NamedTuple):
@@ -26,4 +27,3 @@ HandlerT = Callable[[RequestT], ResponseT]
 class StaticT(NamedTuple):
     content: bytes
     content_type: str
-

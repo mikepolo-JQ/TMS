@@ -1,7 +1,7 @@
 from framework.errors import NotFound
 from framework.types import RequestT
-from handlers import special
 from handlers import get_handler_and_kwargs
+from handlers import special
 
 
 def application(environ: dict, start_response):

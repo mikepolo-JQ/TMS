@@ -1,12 +1,14 @@
-from framework.types import ResponseT, RequestT
 from urllib.parse import parse_qs
 
-from framework.utils import read_static, build_status
+from framework.types import RequestT
+from framework.types import ResponseT
+from framework.utils import build_status
+from framework.utils import read_static
 
 
 def handle_hello(request: RequestT):
 
-    query_string = parse_qs(request.query or '')
+    query_string = parse_qs(request.query or "")
     name = (query_string.get("name") or [None])[0]
 
     base_html = read_static("_base.html")

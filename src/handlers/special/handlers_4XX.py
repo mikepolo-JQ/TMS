@@ -2,7 +2,8 @@ from random import randint
 
 from framework.types import RequestT
 from framework.types import ResponseT
-from framework.utils import read_static, build_status
+from framework.utils import build_status
+from framework.utils import read_static
 
 
 def handle_404(request, _file_name: str = None) -> ResponseT:
@@ -51,7 +52,9 @@ def handle_404(request, _file_name: str = None) -> ResponseT:
                 </div>
             </div>"""
 
-    payload = base_html.content.decode().format(styles="/s/style_404.css", body=str(body_404))
+    payload = base_html.content.decode().format(
+        styles="/s/style_404.css", body=str(body_404)
+    )
     payload = payload.encode()
     status = build_status(404)
     headers = {
@@ -70,5 +73,7 @@ def request_headers_print(request: RequestT) -> str:
             <td class="key">{key}</td>
             <td class="value">{value}</td>            
         </tr>
-        """.format(key=key, value=request.headers[key])
+        """.format(
+            key=key, value=request.headers[key]
+        )
     return table_headers

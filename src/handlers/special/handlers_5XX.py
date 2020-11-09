@@ -1,8 +1,10 @@
 import sys
 import traceback
 
-from framework.types import RequestT, ResponseT
-from framework.utils import read_static, build_status
+from framework.types import RequestT
+from framework.types import ResponseT
+from framework.utils import build_status
+from framework.utils import read_static
 
 
 def handle_error(_request: RequestT = None) -> ResponseT:

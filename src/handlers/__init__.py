@@ -1,5 +1,6 @@
 import re
-from typing import Dict, Tuple
+from typing import Dict
+from typing import Tuple
 
 from framework.types import HandlerT
 from handlers import special
@@ -8,7 +9,7 @@ from handlers.index import handle_index
 
 
 def make_error(_request):
-    1/0
+    1 / 0
 
 
 urlpatterns: Dict[re.compile, HandlerT] = {
