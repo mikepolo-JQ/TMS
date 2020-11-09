@@ -1,10 +1,27 @@
 import http
 import mimetypes
 from pathlib import Path
+from typing import Any
+from typing import Dict
+from urllib.parse import parse_qs
 
 from framework.consts import DIR_STATIC
 from framework.errors import NotFound
 from framework.types import StaticT
+
+
+def get_request_headers(environ: dict) -> dict:
+    headers = {
+        key[5:]: environ[key]
+        for key in filter(lambda key: key.startswith("HTTP_"), environ)
+    }
+    return headers
+
+
+def get_query(environ: dict) -> dict:
+    query_string = environ.get("QUERY_STRING")
+    qs = parse_qs(query_string or "")
+    return qs
 
 
 def read_static(file_name: str) -> StaticT:
@@ -30,3 +47,20 @@ def build_status(code: int) -> str:
 
     text = f"{code} {reason}"
     return text
+
+
+def get_body(environ: dict) -> bytes:
+    body = environ.get("wsgi.input")
+    length = int(environ.get("CONTENT_LENGTH") or 0)
+
+    if not length:
+        return b""
+
+    content = body.read(length)
+    return content
+
+
+def get_form_data(body: bytes) -> Dict[str, Any]:
+    fd = body.decode()
+    form_data = parse_qs(fd or "")
+    return form_data

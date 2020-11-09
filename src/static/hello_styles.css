@@ -1,0 +1,57 @@
+body{
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    color: #333
+}
+
+*,
+*:before,
+*:after{
+    box-sizing: border-box;
+}
+
+
+
+/* container */
+.container{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* intro */
+.intro{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background: #262835
+    center
+    no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+/**/
+.intro_inner{
+    width: 100%;
+    max-width: 840px;
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+
+
+/* HELLO PAGE */
+.hello{
+    margin-bottom: 10px;
+    font-family: 'Kaushan Script', cursive;
+    color: #00a2e8;
+    font-size: 50px;
+}
+
+form{
+    color: white;
+}
