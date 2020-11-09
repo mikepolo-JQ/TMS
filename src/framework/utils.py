@@ -2,16 +2,7 @@ import http
 import mimetypes
 from pathlib import Path
 
-from framework.consts import DIR_ASSETS
 from framework.consts import DIR_STATIC
-
-# def read_static(file_name: str) -> bytes:
-#     path = DIR_STATIC / file_name
-#
-#     with path.open("rb") as fp:
-#         payload = fp.read()
-#
-#     return payload
 from framework.errors import NotFound
 from framework.types import StaticT
 
@@ -39,12 +30,3 @@ def build_status(code: int) -> str:
 
     text = f"{code} {reason}"
     return text
-
-
-def read_assets(file_name: str) -> bytes:
-    path = DIR_ASSETS / file_name
-
-    with path.open("rb") as fp:
-        payload = fp.read()
-
-    return payload
