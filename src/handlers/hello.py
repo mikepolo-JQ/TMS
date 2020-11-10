@@ -9,7 +9,8 @@ def handle_hello(request: RequestT):
     name = (request.form_data.get("name") or [None])[0]
     address = (request.form_data.get("address") or [None])[0]
 
-    base_html = read_static("_base.html")
+    base = read_static("_base.html")
+    base_html = base.content.decode()
     hello_html = read_static("hello.html").content.decode()
 
     document = hello_html.format(
@@ -19,11 +20,9 @@ def handle_hello(request: RequestT):
         address_value=address or "",
     )
 
-    payload = base_html.content.decode().format(
-        styles="/s/hello_styles.css", body=document
-    )
+    payload = base_html.format(styles="/s/hello_styles.css", body=document)
     status = build_status(200)
     headers = {
-        "Content-type": base_html.content_type,
+        "Content-type": base.content_type,
     }
     return ResponseT(status, headers, payload.encode())
