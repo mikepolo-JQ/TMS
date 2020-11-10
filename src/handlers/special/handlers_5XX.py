@@ -13,7 +13,7 @@ def handle_error(_request: RequestT = None) -> ResponseT:
     error_class, error, tb = sys.exc_info()
 
     filenames = "".join(
-        f"""<p>File <a href="http://localhost:8000/s/{frame.f_code.co_filename}">{frame.f_code.co_filename}</a>,
+        f"""<p>File <a class="error__link" href="http://localhost:8000/s/{frame.f_code.co_filename}">{frame.f_code.co_filename}</a>,
             line {lineno}</p>"""
         for frame, lineno in traceback.walk_tb(tb)
     )
@@ -21,8 +21,8 @@ def handle_error(_request: RequestT = None) -> ResponseT:
     document = f"""
     <div class="intro">
         <div class="container">
-            <div class="intro_inner">
-                <h1 color="red">WASTED</h1>
+            <div class="error">
+                <h1 class="error_title">WASTED</h1>
                 <hr>
                 <p>{filenames}</p>
                 <p>{error_class.__name__}: {error}</p>
