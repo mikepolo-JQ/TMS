@@ -13,7 +13,7 @@ def test(browser, request):
     page = HelloPage(browser, url)
 
     assert page.greeting.text == "Hello, Anon!"
-    assert page.address.text == "Your location is localhost."
+    assert page.address.text == "Your location is XZ."
 
     page.name_input.clear()
     page.address_input.clear()
@@ -21,7 +21,7 @@ def test(browser, request):
     page.submit_button.click()
     validate_redirect(page, url)
     assert page.greeting.text == "Hello, Mike!"
-    assert page.address.text == "Your location is localhost."
+    assert page.address.text == "Your location is XZ."
     assert page.name_input.get_attribute("value") == "Mike"
 
     page.name_input.clear()
