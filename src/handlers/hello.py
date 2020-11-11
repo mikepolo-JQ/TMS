@@ -51,17 +51,12 @@ def handle_hello_post(request):
     save_user_data(name, address)
 
     return ResponseT(
-        status=build_status(302),
-        headers={"Location": "/hello/"},
-        payload=b""
+        status=build_status(302), headers={"Location": "/hello/"}, payload=b""
     )
 
 
 def save_user_data(name: str, address: str) -> None:
-    d = {
-        "name": name,
-        "address": address
-    }
+    d = {"name": name, "address": address}
     with USER_DATA.open("w") as fp:
         json.dump(d, fp, sort_keys=True)
 
