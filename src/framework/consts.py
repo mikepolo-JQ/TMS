@@ -10,15 +10,21 @@ Visit http://{host}:{port}
 ..........................................
 """
 
-DIR_STATIC = (Path(__file__).parent.parent / "static").resolve()
+_this_file_path = Path(__file__).resolve()
+
+DIR_FRAMEWORK = _this_file_path.parent.resolve()
+
+DIR_SRC = DIR_FRAMEWORK.parent.resolve()
+
+DIR_REPO = DIR_SRC.parent.resolve()
+
+DIR_STATIC = (DIR_REPO / "static").resolve()
 
 DIR_ASSETS = (DIR_STATIC / "assets").resolve()
-# _this_file_path = Path(__file__).resolve()
-#
-# DIR_FRAMEWORK = _this_file_path.parent.resolve()
-#
-# DIR_SRC = DIR_FRAMEWORK.parent.resolve()
-#
-# DIR_REPO = DIR_SRC.parent.resolve()
-#
+
+
 # DIR_STATIC = (DIR_REPO / "static").resolve()
+
+DIR_STORAGE = (DIR_REPO / "storage").resolve()
+
+USER_DATA = (DIR_STORAGE / "user_data.json").resolve()

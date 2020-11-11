@@ -6,8 +6,8 @@ from typing import Optional
 
 class ResponseT(NamedTuple):
     status: str
-    headers: dict
-    payload: bytes
+    headers: Optional[dict] = None
+    payload: Optional[bytes] = None
 
 
 @dataclasses.dataclass

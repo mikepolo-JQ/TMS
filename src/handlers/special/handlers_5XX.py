@@ -23,7 +23,7 @@ def handle_error(_request: RequestT = None) -> ResponseT:
         <div class="container">
             <div class="error">
                 <h1 class="error_title">WASTED</h1>
-                <hr>
+
                 <p>{filenames}</p>
                 <p>{error_class.__name__}: {error}</p>
 
