@@ -1,14 +1,17 @@
+from framework.types import ResponseT
+from framework.utils import build_status
 from framework.utils import read_static
-from handlers.response import ResponseT
 
 
-def handler_index(_environ) -> ResponseT:
-    base_html = read_static("_base.html").decode()
-    index_html = read_static("index.html").decode()
-    payload = base_html.format(styles_path="/styles", body=index_html)
+def handle_index(_request) -> ResponseT:
+    base_html = read_static("_base.html")
+    index_html = read_static("index.html").content.decode()
+    payload = base_html.content.decode().format(styles="/s/styles.css", body=index_html)
     payload = payload.encode()
-    status = "200 OK"
+
+    status = build_status(200)
     headers = {
-        "Content-type": "text/html",
+        "Content-types": base_html.content_type,
     }
-    return status, headers, payload
+
+    return ResponseT(status, headers, payload)
