@@ -33,7 +33,7 @@ def handle_hello_get(request: RequestT) -> ResponseT:
         address_value=address or "",
     )
 
-    payload = base_html.format(styles="/s/hello_styles.css", body=document)
+    payload = base_html.format(favicon="favicon.ico", styles="hello_styles.css", body=document)
     status = build_status(200)
     headers = {
         "Content-type": base.content_type,
