@@ -17,7 +17,9 @@ def handle_404(request, _file_name: str = None) -> ResponseT:
         url=url, pin=pin, headers_table=request_headers_print(request)
     )
 
-    payload = base_html.format(favicon="favicon_red.ico", styles="style_404.css", body=not_found_html)
+    payload = base_html.format(
+        favicon="favicon_red.ico", styles="style_404.css", body=not_found_html
+    )
     payload = payload.encode()
     status = build_status(404)
     headers = {
