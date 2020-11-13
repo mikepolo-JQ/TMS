@@ -1,9 +1,11 @@
 from framework.errors import NotFound
+from framework.storage import find_user
 from framework.types import RequestT
 from framework.utils import get_body
 from framework.utils import get_form_data
 from framework.utils import get_query
 from framework.utils import get_request_headers
+from framework.utils import get_user_id
 from handlers import get_handler_and_kwargs
 from handlers import special
 
@@ -18,6 +20,9 @@ def application(environ: dict, start_response):
     body = get_body(environ)
     form_data = get_form_data(body)
 
+    user_id = get_user_id(request_headers)
+    user = find_user(user_id)
+
     request = RequestT(
         method=method,
         kwargs=kwargs,
@@ -26,6 +31,7 @@ def application(environ: dict, start_response):
         query=query,
         body=body,
         form_data=form_data,
+        user=user,
     )
 
     try:

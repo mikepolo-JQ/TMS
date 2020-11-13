@@ -3,9 +3,11 @@ import mimetypes
 from pathlib import Path
 from typing import Any
 from typing import Dict
+from typing import Optional
 from urllib.parse import parse_qs
 
 from framework.consts import DIR_STATIC
+from framework.consts import USER_COOKIE
 from framework.errors import NotFound
 from framework.types import StaticT
 
@@ -64,3 +66,10 @@ def get_form_data(body: bytes) -> Dict[str, Any]:
     fd = body.decode()
     form_data = parse_qs(fd or "")
     return form_data
+
+
+def get_user_id(headers: Dict) -> Optional[str]:
+    cookies = parse_qs(headers.get("COOKIE", ""))
+    user_id = cookies.get(USER_COOKIE, [None])[0]
+
+    return user_id
