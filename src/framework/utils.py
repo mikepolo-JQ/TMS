@@ -1,12 +1,14 @@
 import http
 import mimetypes
+from http.cookies import SimpleCookie
 from pathlib import Path
 from typing import Any
 from typing import Dict
 from typing import Optional
 from urllib.parse import parse_qs
 
-from framework.consts import DIR_STATIC
+from framework import settings
+from framework.consts import DIR_STATIC, USER_TTL
 from framework.consts import USER_COOKIE
 from framework.errors import NotFound
 from framework.types import StaticT
@@ -69,7 +71,29 @@ def get_form_data(body: bytes) -> Dict[str, Any]:
 
 
 def get_user_id(headers: Dict) -> Optional[str]:
-    cookies = parse_qs(headers.get("COOKIE", ""))
-    user_id = cookies.get(USER_COOKIE, [None])[0]
+    cookies_header = headers.get("COOKIE", "")
 
+    cookies = SimpleCookie(cookies_header)
+
+    if USER_COOKIE not in cookies:
+        return None
+
+    user_id = cookies[USER_COOKIE].value
     return user_id
+
+
+def build_user_cookie_header(user_id: str, clear=False) -> str:
+    jar = SimpleCookie()
+
+    jar[USER_COOKIE] = user_id
+
+    cookie = jar[USER_COOKIE]
+    cookie["Domain"] = settings.HOST
+    cookie["Path"] = "/"
+    cookie["HttpOnly"] = True
+
+    max_age = 0 if clear else USER_TTL.total_seconds()
+    cookie["Max-Age"] = max_age
+
+    header = str(jar).split(":")[1].strip()
+    return header

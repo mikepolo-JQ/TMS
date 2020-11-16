@@ -2,10 +2,10 @@ from framework import settings
 from framework.consts import USER_COOKIE
 from framework.consts import USER_TTL
 from framework.errors import MethodNotAllowed
-from framework.storage import save_user
+from framework.storage import save_user, delete_cookie
 from framework.types import RequestT
 from framework.types import ResponseT
-from framework.utils import build_status
+from framework.utils import build_status, build_user_cookie_header
 from framework.utils import read_static
 
 
@@ -58,27 +58,30 @@ def handle_hello_post(request):
 
     save_user(request.user)
 
+    cookie = build_user_cookie_header(request.user.id)
+
     resp = ResponseT(
         status=build_status(302),
         headers={
             "Location": "/hello/",
-            "Set-Cookie": (
-                f"{USER_COOKIE}={request.user.id};"
-                f" Domain={settings.HOST};"
-                f" HttpOnly;"
-                f" Max-Age={USER_TTL.total_seconds()}"
-            ),
+            "Set-Cookie": cookie,
         },
     )
 
     return resp
 
 
-# def load_user_data() -> Tuple[str, str]:
-#     if not USER_DATA_FILE.is_file():
-#         return "Anon", "XZ"
-#
-#     with USER_DATA_FILE.open("r") as fp:
-#         user_date = json.load(fp)
-#
-#     return (user_date.get("name") or [None])[0], (user_date.get("address") or [None])[0]
+def handler_hello_delete(request: RequestT) -> ResponseT:
+    delete_cookie(request.user)
+
+    cookie = build_user_cookie_header(request.user.id, clear=True)
+
+    headers = {
+        "Location": "/hello/",
+        "Set-Cookie": cookie,
+    }
+
+    return ResponseT(
+        status=build_status(302),
+        headers=headers,
+    )

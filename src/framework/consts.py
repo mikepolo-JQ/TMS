@@ -27,7 +27,7 @@ DIR_STORAGE = (DIR_REPO / "storage").resolve()
 
 USER_DATA_FILE = (DIR_STORAGE / "user_data.json").resolve()
 
-USER_COOKIE = "z37user"
+USER_COOKIE = "mikepolo"
 
 USER_TTL = timedelta(minutes=5)
 

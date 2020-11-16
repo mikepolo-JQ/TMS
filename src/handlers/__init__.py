@@ -4,7 +4,7 @@ from typing import Tuple
 
 from framework.types import HandlerT
 from handlers import special
-from handlers.hello import handle_hello
+from handlers.hello import handle_hello, handler_hello_delete
 from handlers.index import handle_index
 
 
@@ -19,6 +19,7 @@ urlpatterns: Dict[re.compile, HandlerT] = {
         "^/e/$": make_error,
         "^/hello/$": handle_hello,
         "^/s/(?P<file_name>.+)$": special.handle_static,
+        "^/hello/delete$": handler_hello_delete,
     }.items()
 }
 
