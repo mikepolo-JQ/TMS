@@ -5,7 +5,7 @@ from framework.errors import MethodNotAllowed
 from framework.storage import save_user, delete_cookie
 from framework.types import RequestT
 from framework.types import ResponseT
-from framework.utils import build_status, build_user_cookie_header
+from framework.utils import build_status, build_cookie_headers
 from framework.utils import read_static
 
 
@@ -58,7 +58,7 @@ def handle_hello_post(request):
 
     save_user(request.user)
 
-    cookie = build_user_cookie_header(request.user.id)
+    cookie = build_cookie_headers(request.user.id)
 
     resp = ResponseT(
         status=build_status(302),
@@ -74,7 +74,7 @@ def handle_hello_post(request):
 def handler_hello_delete(request: RequestT) -> ResponseT:
     delete_cookie(request.user)
 
-    cookie = build_user_cookie_header(request.user.id, clear=True)
+    cookie = build_cookie_headers(request.user.id, clear=True)
 
     headers = {
         "Location": "/hello/",

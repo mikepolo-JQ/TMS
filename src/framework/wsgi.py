@@ -1,7 +1,7 @@
 from framework.errors import NotFound
 from framework.storage import find_user
 from framework.types import RequestT
-from framework.utils import get_body
+from framework.utils import get_body, get_request_method, get_request_path
 from framework.utils import get_form_data
 from framework.utils import get_query
 from framework.utils import get_request_headers
@@ -12,8 +12,8 @@ from handlers import special
 
 def application(environ: dict, start_response):
 
-    path = environ["PATH_INFO"]
-    method = environ["REQUEST_METHOD"]
+    path = get_request_path(environ)
+    method = get_request_method(environ)
     query = get_query(environ)
     handler, kwargs = get_handler_and_kwargs(path)
     request_headers = get_request_headers(environ)

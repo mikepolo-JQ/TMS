@@ -14,6 +14,14 @@ from framework.errors import NotFound
 from framework.types import StaticT
 
 
+def get_request_path(environ: dict) -> str:
+    return environ["PATH_INFO"]
+
+
+def get_request_method(environ: dict) -> str:
+    return environ["REQUEST_METHOD"]
+
+
 def get_request_headers(environ: dict) -> dict:
     headers = {
         key[5:]: environ[key]
@@ -82,7 +90,7 @@ def get_user_id(headers: Dict) -> Optional[str]:
     return user_id
 
 
-def build_user_cookie_header(user_id: str, clear=False) -> str:
+def build_cookie_headers(user_id: str, clear=False) -> str:
     jar = SimpleCookie()
 
     jar[USER_COOKIE] = user_id
