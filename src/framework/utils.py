@@ -8,8 +8,9 @@ from typing import Optional
 from urllib.parse import parse_qs
 
 from framework import settings
-from framework.consts import DIR_STATIC, USER_TTL
+from framework.consts import DIR_STATIC
 from framework.consts import USER_COOKIE
+from framework.consts import USER_TTL
 from framework.errors import NotFound
 from framework.types import StaticT
 

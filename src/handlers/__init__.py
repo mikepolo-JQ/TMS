@@ -4,7 +4,8 @@ from typing import Tuple
 
 from framework.types import HandlerT
 from handlers import special
-from handlers.hello import handle_hello, handler_hello_delete
+from handlers.hello import handle_hello
+from handlers.hello import handler_hello_delete
 from handlers.index import handle_index
 
 

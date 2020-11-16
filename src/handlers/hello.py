@@ -2,10 +2,12 @@ from framework import settings
 from framework.consts import USER_COOKIE
 from framework.consts import USER_TTL
 from framework.errors import MethodNotAllowed
-from framework.storage import save_user, delete_cookie
+from framework.storage import delete_cookie
+from framework.storage import save_user
 from framework.types import RequestT
 from framework.types import ResponseT
-from framework.utils import build_status, build_cookie_headers
+from framework.utils import build_cookie_headers
+from framework.utils import build_status
 from framework.utils import read_static
 
 
