@@ -1,9 +1,12 @@
-import json
-from typing import Tuple
-
-from framework.consts import USER_DATA
+from framework import settings
+from framework.consts import USER_COOKIE
+from framework.consts import USER_TTL
+from framework.errors import MethodNotAllowed
+from framework.storage import delete_cookie
+from framework.storage import save_user
 from framework.types import RequestT
 from framework.types import ResponseT
+from framework.utils import build_cookie_headers
 from framework.utils import build_status
 from framework.utils import read_static
 
@@ -14,6 +17,9 @@ def handle_hello(request: RequestT):
         "POST": handle_hello_post,
     }
     handler = handlers.get(request.method)
+    if not handler:
+        raise MethodNotAllowed
+
     return handler(request)
 
 
@@ -24,18 +30,17 @@ def handle_hello_get(request: RequestT) -> ResponseT:
     base_html = base.content.decode()
     hello_html = read_static("hello.html").content.decode()
 
-    name, address = load_user_data()
-
     document = hello_html.format(
-        name_handler=name or "Anon",
-        name_value=name or "",
-        address_handler=address or "XZ",
-        address_value=address or "",
+        name_handler=request.user.name or "Anon",
+        name_value=request.user.name or "",
+        address_handler=request.user.address or "XZ",
+        address_value=request.user.address or "",
     )
 
     payload = base_html.format(
         favicon="favicon.ico", styles="hello_styles.css", body=document
     )
+
     status = build_status(200)
     headers = {
         "Content-type": base.content_type,
@@ -47,27 +52,38 @@ def handle_hello_post(request):
     assert request.method == "POST"
 
     form_data = request.form_data
-    name = form_data.get("name")
-    address = form_data.get("address")
+    name = form_data.get("name", [None])[0]
+    address = form_data.get("address", [None])[0]
 
-    save_user_data(name, address)
+    request.user.name = name
+    request.user.address = address
 
-    return ResponseT(
-        status=build_status(302), headers={"Location": "/hello/"}, payload=b""
+    save_user(request.user)
+
+    cookie = build_cookie_headers(request.user.id)
+
+    resp = ResponseT(
+        status=build_status(302),
+        headers={
+            "Location": "/hello/",
+            "Set-Cookie": cookie,
+        },
     )
 
-
-def save_user_data(name: str, address: str) -> None:
-    d = {"name": name, "address": address}
-    with USER_DATA.open("w") as fp:
-        json.dump(d, fp, sort_keys=True)
+    return resp
 
 
-def load_user_data() -> Tuple[str, str]:
-    if not USER_DATA.is_file():
-        return "Anon", "XZ"
+def handler_hello_delete(request: RequestT) -> ResponseT:
+    delete_cookie(request.user)
 
-    with USER_DATA.open("r") as fp:
-        user_date = json.load(fp)
+    cookie = build_cookie_headers(request.user.id, clear=True)
 
-    return (user_date.get("name") or [None])[0], (user_date.get("address") or [None])[0]
+    headers = {
+        "Location": "/hello/",
+        "Set-Cookie": cookie,
+    }
+
+    return ResponseT(
+        status=build_status(302),
+        headers=headers,
+    )

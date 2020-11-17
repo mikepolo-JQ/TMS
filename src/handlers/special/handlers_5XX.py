@@ -36,7 +36,7 @@ def handle_error(_request: RequestT = None) -> ResponseT:
     base = read_static("_base.html")
     base_html = base.content.decode()
     document = base_html.format(
-        favicon="favicon_red.ico", styles="styles.css", body=document
+        favicon="favicon_red.ico", styles="error_styles.css", body=document
     )
 
     payload = document.encode()
