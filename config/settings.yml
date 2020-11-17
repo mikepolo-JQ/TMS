@@ -13,6 +13,7 @@ default:
   DIRS_TEMPLATES: [ ]
   MODE_DEBUG: true
   MODE_PROFILING: false
+  HOST: ""
   PORT: -1
   PROJECT_NAME: "TMS"
   TEMPLATE_ENGINE: "Django"
@@ -22,6 +23,7 @@ default:
 
 development:
   PORT: 8000
+  HOST: "localhost"
 
 
 ci:
