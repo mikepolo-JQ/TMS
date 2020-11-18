@@ -1,6 +1,7 @@
 import sys
 import traceback
 
+from framework import settings
 from framework.types import RequestT
 from framework.types import ResponseT
 from framework.utils import build_status
@@ -13,7 +14,7 @@ def handle_error(_request: RequestT = None) -> ResponseT:
     error_class, error, tb = sys.exc_info()
 
     filenames = "".join(
-        f"""<p>File <a class="error__link" href="http://localhost:8000/s/{frame.f_code.co_filename}">{frame.f_code.co_filename}</a>,
+        f"""<p>File <a class="error__link" href="http://{settings.HOST}/s/{frame.f_code.co_filename}">{frame.f_code.co_filename}</a>,
             line {lineno}</p>"""
         for frame, lineno in traceback.walk_tb(tb)
     )
