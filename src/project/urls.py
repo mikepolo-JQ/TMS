@@ -1,15 +1,18 @@
 from django.contrib import admin
-from django.http import HttpResponse, HttpRequest
+from django.http import HttpRequest
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import path
 
 from framework.utils import read_static
+
 # from my_app import views
 
 
 def index(request):
-    payload = render(request, "index.html",
-                     context={'styles': "{% static 'styles/styles.css' %}"})
+    payload = render(
+        request, "index.html", context={"styles": "{% static 'styles/styles.css' %}"}
+    )
     return HttpResponse(payload)
 
 
@@ -44,9 +47,8 @@ def hello_styles(_request: HttpRequest) -> HttpResponse:
 
 
 urlpatterns = [
-    path("admin/", admin.site.urls, name='admin'),
-    path("", index, name='index'),
-
-    path("hello/", hello, name='hello'),
-    path('hello/s/assets/styles/hello_styles.css/', hello_styles)
+    path("admin/", admin.site.urls, name="admin"),
+    path("", index, name="index"),
+    path("hello/", hello, name="hello"),
+    path("hello/s/assets/styles/hello_styles.css/", hello_styles),
 ]
