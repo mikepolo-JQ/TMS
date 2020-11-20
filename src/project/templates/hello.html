@@ -1,0 +1,40 @@
+{% extends "_base.html" %}
+
+{% block intro %}
+<div class="intro">
+    <div class="container">
+        <div class="intro_inner">
+            <div id="greeting_display_id" class="hello">Hello,
+                <span class="input_item"> {name_handler}</span>!
+            </div>
+            <div id="address_display_id" class="hello">Your location is
+                <span class="input_item"> {address_handler}</span>.
+            </div>
+
+            <div class="container_form">
+                <form method="post">
+                    <p>
+                    <label for="name_id">Name:</label>
+                    <input id="name_id" name="name" placeholder="What is your name?" type="text" value="{name_value}">
+                    </p>
+
+                    <p>
+                    <label for="address_id">Address:</label>
+                    <input id="address_id" name="address" placeholder="Where are you?" type="text" value="{address_value}">
+                    </p>
+
+                    <p>
+                    <button id="submit_id">Send</button>
+                    </p>
+                </form>
+
+                <form action="/hello/delete" method="post" >
+                    <button id="reset_id">Reset</button>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

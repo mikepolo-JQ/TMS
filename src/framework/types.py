@@ -31,7 +31,7 @@ class RequestT:
 class UserT:
     name: Optional[str] = None
     address: Optional[str] = None
-    id: Optional[int] = None
+    id: Optional[str] = None
     created_at: datetime = dataclasses.field(default_factory=datetime.utcnow)
 
     def fix(self):

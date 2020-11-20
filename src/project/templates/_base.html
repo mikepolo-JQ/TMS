@@ -1,11 +1,13 @@
+{% load static %}
+
 <!DOCTYPE html>
     <html>
     <head>
         <title>mikepolo site</title>
         <meta charset="utf-8">
         <link type="image/x-icon" rel="shortcut icon"
-              href="/s/assets/icons/{favicon}">
-        <link rel="stylesheet" href="s/assets/styles/{styles}">
+              href="{% static "icons/favicon.ico" %}">
+        <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
 <!--        <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap"-->
 <!--        rel="stylesheet">-->
         <link href="https://fonts.googleapis.com/css2?
@@ -28,6 +30,8 @@
                 </div>
             </div>
         </div>
-        {body}
+
+        {% block intro %}{% endblock %}
+
     </body>
     </html>
