@@ -20,11 +20,10 @@ def validate_title(page: MainPage):
 
 
 def validate_content(page: MainPage):
-    pass
-    # assert page.h1.tag_name == "h1"
-    # assert page.h1.text == "MIKEPOLO SITE"
-    # assert page.h2.tag_name == "h2"
-    # assert page.h2.text == "Welcome to"
+    assert page.h1.tag_name == "h1"
+    assert page.h1.text == "mikepolo site"
+    assert page.h2.tag_name == "h2"
+    assert page.h2.text == "Welcome to"
 
     # assert page.a.tag_name == "a"
     # assert page.a.text == "ABOUT"

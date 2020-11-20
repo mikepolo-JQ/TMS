@@ -9,4 +9,4 @@ class MainPage(PageObject):
     h2 = PageElement(By.CSS_SELECTOR, "h2")
     # p = PageElement(By.CSS_SELECTOR, "p")
     # a = PageElement(By.CSS_SELECTOR, "a")
-    # nav = PageElement(By.CSS_SELECTOR, "nav")
+    # # nav = PageElement(By.CSS_SELECTOR, "nav")
