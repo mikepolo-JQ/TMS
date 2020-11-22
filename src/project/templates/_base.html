@@ -7,9 +7,16 @@
         <meta charset="utf-8">
         <link type="image/x-icon" rel="shortcut icon"
               href="{% static "icons/favicon.ico" %}">
-        <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
-<!--        <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap"-->
-<!--        rel="stylesheet">-->
+        <link rel="stylesheet" href="
+            {% if page == "index" %}
+                {% static 'styles/styles.css' %}
+            {% elif page == "hello" %}
+                {% static 'styles/hello_styles.css' %}
+            {% elif page == "not_found" %}
+                {% static 'styles/error_styles.css' %}
+            {% endif %}
+        ">
+
         <link href="https://fonts.googleapis.com/css2?
         family=Kaushan+Script&family=Montserrat:wght@400;700&display=swap"
         rel="stylesheet">
