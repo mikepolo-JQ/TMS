@@ -1,14 +1,15 @@
 from random import randint
 
+from django.conf.urls import handler404
 from django.contrib import admin
-from django.http import HttpRequest
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import include
 from django.urls import path
+from django.views.defaults import ERROR_404_TEMPLATE_NAME
 
 
-def not_found(request: HttpRequest) -> HttpResponse:
+def view_not_found(request, exception, template_name=ERROR_404_TEMPLATE_NAME):
 
     url = request.path
     pin = randint(1, 1000)
@@ -29,9 +30,11 @@ def not_found(request: HttpRequest) -> HttpResponse:
     return HttpResponse(payload, status=404)
 
 
+handler404 = view_not_found
+
+
 urlpatterns = [
     path("admin/", admin.site.urls, name="admin"),
-    path("", include("applications.landing.urls"), name="index"),
+    path("", include("applications.main.urls"), name="index"),
     path("hello/", include("applications.hello.urls"), name="hello"),
-    path("learnMore/", not_found, name="not_found"),
 ]
