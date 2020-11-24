@@ -5,8 +5,14 @@
     <head>
         <title>mikepolo site</title>
         <meta charset="utf-8">
-        <link type="image/x-icon" rel="shortcut icon"
-              href="{% static "icons/favicon.ico" %}">
+        <link type="image/x-icon" rel="shortcut icon" href="
+            {% if ico == "r" %}
+                {% static "icons/favicon_red.ico" %}
+            {% else %}
+                {% static "icons/favicon.ico" %}
+            {% endif %}
+        ">
+
         <link rel="stylesheet" href="
             {% if page == "index" %}
                 {% static 'styles/styles.css' %}

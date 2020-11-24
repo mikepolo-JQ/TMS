@@ -12,7 +12,7 @@ def handle_404(request, _file_name: str = None) -> ResponseT:
     base = read_static("_base.html")
     base_html = base.content.decode()
 
-    body_404 = read_static("not_found.html").content.decode()
+    body_404 = read_static("404.html").content.decode()
     not_found_html = body_404.format(
         url=url, pin=pin, headers_table=request_headers_print(request)
     )
