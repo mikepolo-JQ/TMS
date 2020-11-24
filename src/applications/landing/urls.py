@@ -4,5 +4,4 @@ from applications.landing.views import index
 
 urlpatterns = [
     path("", index, name="index"),
-
 ]
