@@ -4,6 +4,7 @@ default:
   DIRS_EXCLUDED:
     - .idea
     - .pytest_cache
+    - .static
     - .tests_artifacts
   DIRS_RESOURCES:
     - config
@@ -15,7 +16,7 @@ default:
     - src/project/templates/
     - src/applications/hello/templates/
     - src/applications/main/templates/
-  MODE_DEBUG: true
+  MODE_DEBUG: false
   MODE_PROFILING: false
   HOST: ""
   PORT: -1
@@ -39,6 +40,5 @@ ci:
 
 
 heroku:
-  MODE_DEBUG: false
-  SECRET_KEY: "1"
   HOST: "mikepolo.herokuapp.com"
+  MODE_DEBUG: false
