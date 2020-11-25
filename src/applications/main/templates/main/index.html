@@ -1,0 +1,80 @@
+{% extends "_base.html" %}
+{% load static %}
+
+
+{% block intro %}
+<div class="intro">
+<div class="container">
+    <div class="intro_inner">
+        <h2 class="intro__suptitle">Welcome to</h2>
+        <h1 class="intro__title">mikepolo site</h1>
+
+        <a href="learnMore/" class="button">Learn More</a>
+    </div>
+</div>
+
+<div class="slider">
+        <div class="container">
+            <div class="slider__inner">
+                <div class="item__slider">
+                    <span class="slider__number">01</span>
+                    intro
+                </div>
+                <div class="item__slider">
+                    <span class="slider__number">02</span>
+                    work
+                </div>
+                <div class="item__slider">
+                    <span class="slider__number">03</span>
+                    about
+                </div>
+                <div class="item__slider">
+                    <span class="slider__number">04</span>
+                    contacts
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="section">
+    <div class="container">
+
+        <div class="section__header">
+            <h3 class="section__suptitle">Some suptitle</h3>
+            <h2 class="section__title">some Title</h2>
+            <div class="section__text">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+        </div>
+
+        <div class="about">
+            <div class="about__item">
+                <div class="about__img">
+                    <img src="{% static 'images/about/1.jpg' %}" alt="">
+                </div>
+                <div class="about__text">image 1</div>
+            </div>
+
+            <div class="about__item">
+                <div class="about__img">
+                    <img src="{% static 'images/about/2.jpg' %}" alt="">
+                </div>
+                <div class="about__text">image 2</div>
+            </div>
+
+            <div class="about__item">
+                <div class="about__img">
+                    <img src="{% static "images/about/3.jpg" %}" alt="">
+                </div>
+                <div class="about__text">image 3</div>
+            </div>
+        </div>
+
+    </div> <!--container-->
+</section>
+{% endblock %}

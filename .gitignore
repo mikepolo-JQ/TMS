@@ -5,6 +5,7 @@
 .idea/
 .pytest_cache/
 .secrets.*
+.static/
 .tests_artifacts/
 .venv
 __pycache__/
@@ -13,3 +14,4 @@ tests/**/*.html
 tests/**/*.png
 venv/
 storage/*.json
+config/.secrets.yml
