@@ -40,4 +40,5 @@ ci:
 
 heroku:
   MODE_DEBUG: false
+  SECRET_KEY: "1"
   HOST: "mikepolo.herokuapp.com"
