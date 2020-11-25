@@ -69,7 +69,7 @@ static:
 
 
 .PHONY: resetdb
-resetdb:  dropdb createdb migrations migrate
+resetdb: dropdb createdb migrations migrate
 	$(call log, resetting db to initial state)
 
 
