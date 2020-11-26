@@ -2,11 +2,9 @@ from pathlib import Path
 
 from dynaconf import settings as _ds
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+DIR_SRC = Path(__file__).resolve().parent.parent
 
-DIR_PROJECT = (BASE_DIR / "project").resolve()
-
-DIR_SRC = DIR_PROJECT.parent.resolve()
+DIR_PROJECT = (DIR_SRC / "project").resolve()
 
 DIR_REPO = DIR_SRC.parent.resolve()
 
@@ -28,6 +26,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # -------------------------------------
     "applications.main.apps.LandingConfig",
     "applications.hello.apps.HelloConfig",
 ]
@@ -70,7 +69,7 @@ WSGI_APPLICATION = "project.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "NAME": DIR_SRC / "db.sqlite3",
     }
 }
 
