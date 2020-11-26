@@ -32,7 +32,6 @@ def view_not_found(request, exception, template_name=ERROR_404_TEMPLATE_NAME):
 
 handler404 = view_not_found
 
-
 urlpatterns = [
     path("admin/", admin.site.urls, name="admin"),
     path("", include("applications.main.urls"), name="index"),
