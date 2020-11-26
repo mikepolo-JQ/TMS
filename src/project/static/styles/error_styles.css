@@ -214,9 +214,7 @@ tr{
 /* ERROR PAGE */
 .container_5XX{
     margin-top: 10px;
-    background: #262835
-    center
-    no-repeat;
+    background: #262835;
 }
 
 .error{
