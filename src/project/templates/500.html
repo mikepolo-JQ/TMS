@@ -7,39 +7,11 @@
         <div class="error">
             <h1 class="error_title">WASTED</h1>
 
-{#            {% for frame, lineno in traceback %}#}
-{#            <p>File <a class="error__link"#}
-{#               href="http://{{ HOST }}/static/{{ frame.f_code.co_filename }}">#}
-{#                {{ frame.f_code.co_filename }}</a>, line {{ lineno }}</p>#}
-{#            {% endfor %}#}
-            <p>kk</p>
-            <p>kk</p>
-            <p>kk</p>
-            <p>kk</p>
-            <p>kk</p>
-            <p>kk</p>
-            <p>kk</p>
-            <p>kk</p>
-            <p>kk</p>
-            <p>kk</p>
-            <p>kk</p>
-            <p>kk</p>
-            <p>kk</p>
-            <p>kk</p>
-            <p>kk</p>
-            <p>kk</p>
-            <p>kk</p>
-            <p>kk</p>
-            <p>kk</p>
-            <p>kk</p>
-            <p>kk</p>
-            <p>kk</p>
-            <p>kk</p>
-            <p>kk</p>
-            <p>kk</p>
-            <p>kk</p>
-            <p>kk</p>
-
+            {% for frame, lineno in traceback %}
+            <p>File <a class="error__link"
+               href="http://{{ HOST }}/static/{{ frame.f_code.co_filename }}">
+                {{ frame.f_code.co_filename }}</a>, line {{ lineno }}</p>
+            {% endfor %}
 
             <p>{{ error_name }}: {{ error }}</p>
             <a href="/" class="button">< Go home</a>
