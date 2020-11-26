@@ -2,14 +2,16 @@ import sys
 import traceback
 from random import randint
 
-from django.conf.urls import handler404, handler500
-from dynaconf import settings as _ds
+from django.conf.urls import handler404
+from django.conf.urls import handler500
 from django.contrib import admin
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import include
 from django.urls import path
-from django.views.defaults import ERROR_404_TEMPLATE_NAME, ERROR_500_TEMPLATE_NAME
+from django.views.defaults import ERROR_404_TEMPLATE_NAME
+from django.views.defaults import ERROR_500_TEMPLATE_NAME
+from dynaconf import settings as _ds
 
 
 def view_not_found(request, exception, template_name=ERROR_404_TEMPLATE_NAME):
@@ -66,4 +68,3 @@ urlpatterns = [
     path("hello/", include("applications.hello.urls"), name="hello"),
     path("e/", make_error),
 ]
-
