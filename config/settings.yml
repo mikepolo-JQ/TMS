@@ -15,7 +15,7 @@ default:
     - src/project/templates/
     - src/applications/hello/templates/
     - src/applications/main/templates/
-  MODE_DEBUG: true
+  MODE_DEBUG: false
   MODE_PROFILING: false
   HOST: ""
   PORT: -1
@@ -41,3 +41,5 @@ ci:
 heroku:
   MODE_DEBUG: false
   HOST: "mikepolo.herokuapp.com"
+  SECRET_KEY: "1"
+  VENV_SYNTHETIC: true
