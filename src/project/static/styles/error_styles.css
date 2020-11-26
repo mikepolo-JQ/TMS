@@ -215,10 +215,10 @@ tr{
 
 .error{
     width: 100%;
-    max-width: 840px;
+    /*max-width: 840px;*/
     margin: 0 auto;
 
-    text-align: center;
+    /*text-align: center;*/
     font-size: 20px;
 }
 
