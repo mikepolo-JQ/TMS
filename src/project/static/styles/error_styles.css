@@ -213,8 +213,10 @@ tr{
 
 /* ERROR PAGE */
 .container_5XX{
-    margin-top: 10px;
+    margin-top: 20vh;
     background: #262835;
+    -webkit-background-size: cover;
+    background-size: cover;
 }
 
 .error{
