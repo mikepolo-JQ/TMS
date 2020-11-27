@@ -42,5 +42,4 @@ ci:
 heroku:
   HOST: "mikepolo.herokuapp.com"
   MODE_DEBUG: false
-  SECRET_KEY: "1"
   VENV_SYNTHETIC: true
