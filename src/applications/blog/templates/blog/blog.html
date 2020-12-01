@@ -1,0 +1,46 @@
+{% extends "_base.html" %}
+
+{% block intro %}
+<div class="intro">
+    <div class="container">
+        <div class="intro_inner">
+            <div class="blog_title">It's blog, welcome!</div>
+        </div>
+
+        <form action="/blog/new/" method="post">
+            <p>
+            <label for="title_id">Title</label>
+            <input id="title_id" name="title" type="text">
+            </p>
+
+            <p>
+            <label for="content_id">Content:</label>
+            <input id="content_id" name="content" type="text">
+            </p>
+
+            <p>
+            <button id="submit_id">Create post</button>
+            </p>
+            {% csrf_token %}
+        </form>
+
+        <form action="/blog/delete/" method="post" >
+            <button id="reset_id">Reset all posts</button>
+            {% csrf_token %}
+        </form>
+
+
+
+        {% for post in object_list %}
+        <article>
+            <h2 class="post_title">{{ post.title }}</h2>
+            <p class="post_info">{{ post.content }}</p>
+            <p class="post_info">Post time: {{ post.created_at }}</p>
+            <p class="post_info">Likes: {{ post.nr_like }}</p>
+        </article>
+        {% endfor %}
+
+    </div>
+</div>
+
+{% endblock %}
