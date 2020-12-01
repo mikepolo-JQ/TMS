@@ -4,40 +4,47 @@
 <div class="intro">
     <div class="container">
         <div class="intro_inner">
-            <div class="blog_title">It's blog, welcome!</div>
+            <h2 class="blog_title">It's blog, welcome!</h2>
+
+            <div class="container_form">
+                <form action="/blog/new/" method="post">
+                    <p>
+                    <label for="title_id">Title:</label>
+                    <input id="title_id" name="title" type="text">
+                    </p>
+
+                    <p>
+                    <label for="content_id">Content:</label>
+                    <textarea id="content_id" name="content"></textarea>
+                    </p>
+
+                    <p>
+                    <button id="submit_id">Create post</button>
+                    </p>
+                    {% csrf_token %}
+                </form>
+
+                <form action="/blog/delete/" method="post" >
+                    <button id="reset_id">Reset all posts</button>
+                    {% csrf_token %}
+                </form>
+            </div>
+
         </div>
+    </div>
+</div>
 
-        <form action="/blog/new/" method="post">
-            <p>
-            <label for="title_id">Title</label>
-            <input id="title_id" name="title" type="text">
-            </p>
-
-            <p>
-            <label for="content_id">Content:</label>
-            <input id="content_id" name="content" type="text">
-            </p>
-
-            <p>
-            <button id="submit_id">Create post</button>
-            </p>
-            {% csrf_token %}
-        </form>
-
-        <form action="/blog/delete/" method="post" >
-            <button id="reset_id">Reset all posts</button>
-            {% csrf_token %}
-        </form>
-
-
+<div class="posts">
+    <div class="container">
+        <h2 class="post_list_title">Posts</h2>
 
         {% for post in object_list %}
-        <article>
-            <h2 class="post_title">{{ post.title }}</h2>
-            <p class="post_info">{{ post.content }}</p>
-            <p class="post_info">Post time: {{ post.created_at }}</p>
-            <p class="post_info">Likes: {{ post.nr_like }}</p>
-        </article>
+            <article class="post_article">
+                <h2 class="post_title">{{ post.title }}</h2>
+                <p class="post_content">{{ post.content }}</p>
+                <p class="post_time">{{ post.created_at }}</p>
+                <p class="post_like">Likes: {{ post.nr_like }}</p>
+            </article>
         {% endfor %}
 
     </div>

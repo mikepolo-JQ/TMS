@@ -2,7 +2,10 @@ body{
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
-    color: #fff;
+    background: #262835
+    center
+    no-repeat;
+    color: #fff
 }
 
 *,
@@ -25,9 +28,6 @@ body{
     justify-content: center;
     width: 100%;
     height: 100vh;
-    background: #262835
-    center
-    no-repeat;
     -webkit-background-size: cover;
     background-size: cover;
 }
@@ -87,7 +87,7 @@ body{
     height: 3px;
     display: none;
 
-    background-color: greenyellow;
+    background-color: coral;
 
     position: absolute;
     top: 100%;
@@ -97,7 +97,7 @@ body{
 }
 
 .nav__link:hover{
-    color: greenyellow;
+    color: coral;
 }
 .nav__link:hover:after{
     display: block;
@@ -106,7 +106,7 @@ body{
 
 
 /* BLOG PAGE */
-
+/* INTO BLOG */
 .blog_title{
     font-family: 'Kaushan Script', cursive;
     font-size: 70px;
@@ -116,4 +116,121 @@ body{
     /*text-transform: uppercase;*/
 
     line-height: 1;
+}
+
+.container_form{
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+label{
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+input{
+    background-color: #262835;
+    color: white;
+    width: 100%;
+    font-size: 20px;
+
+    padding: 5px 12px;
+
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid coral;
+}
+
+textarea{
+    background-color: #262835;
+    color: white;
+    width: 100%;
+    font-size: 20px;
+
+    padding: 5px 12px;
+
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid coral;
+}
+
+button{
+    margin: 0 110px;
+    background-color: #262835;
+    color: white;
+
+    font-size: 15px;
+    font-weight: bold;
+
+
+    width: 140px;
+    padding: 5px 5px;
+    box-sizing: border-box;
+    border: 3px solid white;
+    border-radius: 4px;
+
+    transition: background .1s linear,
+    color .1s linear;
+}
+
+button:hover{
+    background-color: white;
+    color: #262835;
+}
+
+
+
+/* POSTS */
+.posts{
+    background: #262835;
+
+    color: white;
+    font-size: 15px;
+    /*font-weight: bold;*/
+}
+
+.post_list_title{
+    border-top: 1px solid orangered;
+    text-transform: uppercase;
+    padding: 40px;
+
+    text-align: center;
+    font-size: 30px;
+    color: coral;
+
+}
+
+.post_article{
+    margin: 0 auto 50px;
+
+    width: 100%;
+    max-width: 800px;
+
+    padding: 20px 20px;
+    box-sizing: border-box;
+    border: 3px solid white;
+    border-radius: 20px;
+}
+
+.post_title{
+    font-size: 25px;
+    color: coral;
+    margin: 0 40px;
+}
+
+.post_content{
+    font-size: 20px;
+}
+
+.post_time{
+    font-size: 18px;
+    text-align: right;
+}
+
+.post_like{
+    font-weight: bold;
+    text-align: right;
 }
