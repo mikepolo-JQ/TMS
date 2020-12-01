@@ -22,6 +22,7 @@ gunicorn = "*"
 psycopg2-binary = "*"
 whitenoise = "*"
 dj-database-url = "*"
+sentry-sdk = "*"
 
 [requires]
 python_version = "3.8"

@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     # -------------------------------------
     "applications.main.apps.LandingConfig",
     "applications.hello.apps.HelloConfig",
+    "applications.blog.apps.BlogConfig",
 ]
 
 MIDDLEWARE = [
@@ -70,9 +71,7 @@ WSGI_APPLICATION = "project.wsgi.application"
 
 database_url = os.getenv("DATABASE_URL", _ds.DATABASE_URL)
 
-DATABASES = {
-    "default": dj_database_url.parse(database_url)
-}
+DATABASES = {"default": dj_database_url.parse(database_url)}
 
 
 # Password validation
