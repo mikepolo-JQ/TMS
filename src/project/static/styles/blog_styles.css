@@ -193,7 +193,7 @@ button:hover{
 }
 
 .post_list_title{
-    border-top: 1px solid orangered;
+    border-bottom: 1px solid orangered;
     text-transform: uppercase;
     padding: 40px;
 

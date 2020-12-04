@@ -1,10 +1,13 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.views import View
 
 
-def index(request):
-    context = {"ico": "g", "page": "index"}
+class IndexView(View):
+    def get(self, request):
+        context = {"ico": "g", "page": "index"}
 
-    payload = render(request, "main/index.html", context=context)
+        payload = render(self.request, "main/index.html", context=context)
 
-    return HttpResponse(payload)
+        return payload
+
