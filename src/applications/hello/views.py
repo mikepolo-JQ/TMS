@@ -4,8 +4,8 @@ from django.views.generic import RedirectView
 
 
 class HelloForm(forms.Form):
-    name = forms.CharField()
-    address = forms.CharField()
+    name = forms.CharField(required=False)
+    address = forms.CharField(required=False)
 
 
 class HelloView(FormView):
