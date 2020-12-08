@@ -1,10 +1,8 @@
 from django.urls import path
 
-from applications.hello.views import HelloView
-# from applications.hello.views import view_hello_greet
-# from applications.hello.views import view_hello_reset
+from applications.hello import views
 
 urlpatterns = [
-    path("", HelloView.as_view()),
-    # path("reset/", view_hello_reset),
+    path("", views.HelloView.as_view(), name="hello"),
+    path("reset/", views.HelloClearView.as_view()),
 ]

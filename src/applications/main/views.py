@@ -1,12 +1,14 @@
 from django.shortcuts import render
-from django.views import View
+from django.views.generic import TemplateView
 
 
-class IndexView(View):
-    def get(self, request):
-        context = {"ico": "g", "page": "index"}
+class IndexView(TemplateView):
 
-        payload = render(self.request, "main/index.html", context=context)
+    template_name = "main/index.html"
 
-        return payload
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
 
+        context.update({"ico": "g", "page": "index"})
+
+        return context

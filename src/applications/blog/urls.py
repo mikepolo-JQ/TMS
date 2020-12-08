@@ -5,5 +5,5 @@ from applications.blog import views
 urlpatterns = [
     path("", views.AllPostView.as_view()),
     path("new/", views.MakeNewPost.as_view()),
-    # path("delete/", views.reset_all_posts),
+    path("delete/", views.DeleteAllPost.as_view()),
 ]
