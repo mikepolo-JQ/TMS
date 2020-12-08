@@ -9,10 +9,15 @@
         <a class="nav__link" href="/blog/new/">Create new post</a>
         {% for post in object_list %}
             <article class="post_article">
-                <h2 class="post_title">{{ post.title }}</h2>
+                <a href="/blog/post/{{ post.pk }}"><h2 class="post_title">{{ post.title }}</h2></a>
                 <p class="post_content">{{ post.content }}</p>
                 <p class="post_time">{{ post.created_at }}</p>
                 <p class="post_like">Likes: {{ post.nr_like }}</p>
+
+                <form method="post" action="/blog/post/{{ post.pk }}/delete/">
+                    <button type="submit">Delete post</button>
+                </form>
+
             </article>
         {% endfor %}
 

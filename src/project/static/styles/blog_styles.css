@@ -234,3 +234,8 @@ button:hover{
     font-weight: bold;
     text-align: right;
 }
+
+.post_single{
+    margin-top: 100px;
+    text-align: center;
+}

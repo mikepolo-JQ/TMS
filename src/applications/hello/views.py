@@ -34,20 +34,3 @@ class HelloClearView(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         self.request.session.clear()
         return "/hello/"
-
-
-#
-#
-# def view_hello_greet(request: HttpRequest):
-#     name = request.POST.get("name")
-#     address = request.POST.get("address")
-#
-#     request.session["name"] = name
-#     request.session["address"] = address
-#
-#     return redirect("/hello/")
-#
-#
-# def view_hello_reset(request: HttpRequest):
-#     request.session.clear()
-#     return redirect("/hello/")

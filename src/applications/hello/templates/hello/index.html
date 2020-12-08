@@ -20,13 +20,13 @@
                     <button id="submit_id">Send</button>
                     </p>
                     {% csrf_token %}
+
                 </form>
 
                 <form action="/hello/reset/" method="post" >
                     <button id="reset_id">Reset</button>
                     {% csrf_token %}
                 </form>
-
             </div>
 
         </div>

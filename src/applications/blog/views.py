@@ -1,12 +1,14 @@
-from django.views.generic import CreateView
+from django.urls import reverse
+from django.views.generic import CreateView, DetailView, DeleteView, UpdateView
 from django.views.generic import ListView
 from django.views.generic import RedirectView
+
 
 from applications.blog.models import Post
 
 
 class AllPostView(ListView):
-    template_name = "blog/blog.html"
+    template_name = "blog/index.html"
     model = Post
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -35,27 +37,26 @@ class DeleteAllPost(RedirectView):
         return "/blog/"
 
 
-# def index(request):
-#     context = {"ico": "g", "page": "blog", "object_list": Post.objects.all()}
-#
-#     payload = render(request, "blog/blog.html", context=context)
-#
-#     return HttpResponse(payload)
-#
-#
-# def create_new_post(request):
-#
-#     title = request.POST.get("title")
-#     content = request.POST.get("content")
-#
-#     post = Post(title=title, content=content)
-#     post.save()
-#
-#     return redirect("/blog/")
-#
-#
-# def reset_all_posts(request):
-#
-#     Post.objects.all().delete()
-#
-#     return redirect("/blog/")
+class SinglePost(DetailView):
+    model = Post
+    template_name = "blog/post.html"
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data()
+
+        context.update({"ico": "g", "page": "blog"})
+        return context
+
+
+class UpdatePost(UpdateView):
+    model = Post
+    fields = ["content", "title"]
+    success_url = "/blog/"
+
+
+class DeleteSinglePost(DeleteView):
+    http_method_names = ["post"]
+    model = Post
+    success_url = "/blog/"
+
+
