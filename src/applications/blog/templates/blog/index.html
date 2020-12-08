@@ -6,7 +6,7 @@
     <div class="container">
         <h2 class="post_list_title">Posts</h2>
 
-        <a class="nav__link" href="/blog/new/">Create new post</a>
+        <a class="nav__link" href="{% url "new" %}">Create new post</a>
         {% for post in object_list %}
             <article class="post_article">
                 <a href="/blog/post/{{ post.pk }}"><h2 class="post_title">{{ post.title }}</h2></a>
@@ -14,12 +14,16 @@
                 <p class="post_time">{{ post.created_at }}</p>
                 <p class="post_like">Likes: {{ post.nr_like }}</p>
 
-                <form method="post" action="/blog/post/{{ post.pk }}/delete/">
+                <form method="post" action="{% url "delete_one" post.pk %}">
                     <button type="submit">Delete post</button>
                 </form>
 
             </article>
         {% endfor %}
+        <form action="{% url "delete_all" %}" method="post" >
+            <button id="reset_id">Reset all posts</button>
+            {% csrf_token %}
+        </form>
 
     </div>
 </div>

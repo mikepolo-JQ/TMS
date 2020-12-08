@@ -7,7 +7,7 @@
             <h2 class="blog_title">It's blog, welcome!</h2>
 
             <div class="container_form">
-                <form action="/blog/new/" method="post">
+                <form action="{% url "new" %}" method="post">
                     <p>
                     <label for="title_id">Title:</label>
                     <input id="title_id" name="title" type="text">
@@ -24,10 +24,7 @@
                     {% csrf_token %}
                 </form>
 
-                <form action="/blog/delete/" method="post" >
-                    <button id="reset_id">Reset all posts</button>
-                    {% csrf_token %}
-                </form>
+
             </div>
 
         </div>

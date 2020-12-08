@@ -1,4 +1,4 @@
-from django.urls import reverse
+from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, DeleteView, UpdateView
 from django.views.generic import ListView
 from django.views.generic import RedirectView
@@ -20,7 +20,7 @@ class AllPostView(ListView):
 
 class MakeNewPost(CreateView):
 
-    success_url = "/blog/"
+    success_url = reverse_lazy("index")
     fields = ["content", "title"]
     model = Post
 
@@ -34,7 +34,7 @@ class MakeNewPost(CreateView):
 class DeleteAllPost(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         Post.objects.all().delete()
-        return "/blog/"
+        return reverse_lazy("index")
 
 
 class SinglePost(DetailView):
@@ -51,12 +51,15 @@ class SinglePost(DetailView):
 class UpdatePost(UpdateView):
     model = Post
     fields = ["content", "title"]
-    success_url = "/blog/"
+
+    def get_success_url(self):
+        success_url = reverse_lazy("post", kwargs={"pk": self.object.pk})
+        return success_url
 
 
 class DeleteSinglePost(DeleteView):
     http_method_names = ["post"]
     model = Post
-    success_url = "/blog/"
+    success_url = reverse_lazy("index")
 
 

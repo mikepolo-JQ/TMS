@@ -11,7 +11,8 @@
                 <p class="post_time">{{ object.created_at }}</p>
                 <p class="post_like">Likes: {{ object.nr_like }}</p>
 
-                <form method="post" action="/blog/post/{{ post.pk }}/update/">
+                <div class="container_form">
+                <form method="post" action="{% url "update" object.pk %}">
 
                     <p>
                     <label for="title_id">Title:</label>
@@ -27,6 +28,7 @@
 
                     <button type="submit">Update post</button>
                 </form>
+                </div>
             </article>
 
     </div>
