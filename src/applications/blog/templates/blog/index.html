@@ -4,27 +4,32 @@
 
 <div class="posts">
     <div class="container">
-        <h2 class="post_list_title">Posts</h2>
+        <h2 class="post_list_title">welcome to the blog!</h2>
 
-        <a class="nav__link" href="{% url "new" %}">Create new post</a>
+
+        <div class="post_list_container">
+
+        <a class="creat_new_post" href="{% url "new" %}">Create new post</a>
         {% for post in object_list %}
             <article class="post_article">
-                <a href="/blog/post/{{ post.pk }}"><h2 class="post_title">{{ post.title }}</h2></a>
+                <a id="post_title" href="/blog/post/{{ post.pk }}"><h2 class="post_title">{{ post.title }}</h2></a>
                 <p class="post_content">{{ post.content }}</p>
                 <p class="post_time">{{ post.created_at }}</p>
                 <p class="post_like">Likes: {{ post.nr_like }}</p>
 
                 <form method="post" action="{% url "delete_one" post.pk %}">
-                    <button type="submit">Delete post</button>
+                    <button id="single_post_delete" type="submit">Delete post</button>
                 </form>
 
             </article>
         {% endfor %}
+
         <form action="{% url "delete_all" %}" method="post" >
-            <button id="reset_id">Reset all posts</button>
+            <button id="reset_all_id">Reset all posts</button>
             {% csrf_token %}
         </form>
 
+        </div>
     </div>
 </div>
 
