@@ -1,0 +1,344 @@
+body{
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    background: #262835
+    center
+    no-repeat;
+    color: #fff
+}
+
+*,
+*:before,
+*:after{
+    box-sizing: border-box;
+}
+
+/* container */
+.container{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* intro */
+.intro{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+/**/
+.intro_inner{
+    width: 100%;
+    max-width: 840px;
+    margin: 0 auto;
+}
+
+/* header */
+.header{
+    width: 100%;
+    padding-top: 30px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.header__inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo{
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    text-decoration: None;
+}
+
+/* NAV */
+.nav{
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.nav__link{
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 20px;
+    position: relative;
+
+    color: #fff;
+    text-decoration: None;
+
+    transition: color .2s linear;
+}
+
+.nav__link:after{
+    content: "";
+    width: 100%;
+    height: 3px;
+    display: none;
+
+    background-color: coral;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    transition: color .2s linear;
+}
+
+.nav__link:hover{
+    color: coral;
+}
+.nav__link:hover:after{
+    display: block;
+    /*color: #00a2e8;*/
+}
+
+
+/* BLOG PAGE */
+/* INTO BLOG */
+.blog_title{
+    font-family: 'Kaushan Script', cursive;
+    font-size: 70px;
+    font-weight: 700;
+    color: coral;
+    text-align: center;
+    /*text-transform: uppercase;*/
+
+    line-height: 1;
+}
+
+.container_form{
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+label{
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+input{
+    background-color: #262835;
+    color: white;
+    width: 100%;
+    font-size: 20px;
+
+    padding: 5px 12px;
+
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid coral;
+}
+
+textarea{
+    background-color: #262835;
+    color: white;
+    width: 100%;
+    font-size: 20px;
+
+    padding: 5px 12px;
+
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid coral;
+}
+
+button{
+    margin: 0 110px;
+    background-color: #262835;
+    color: white;
+
+    font-size: 15px;
+    font-weight: bold;
+
+
+    width: 140px;
+    padding: 5px 5px;
+    box-sizing: border-box;
+    border: 3px solid white;
+    border-radius: 4px;
+
+    transition: background .1s linear,
+    color .1s linear;
+}
+
+button:hover{
+    background-color: white;
+    color: #262835;
+}
+
+
+
+/* POSTS */
+.posts{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background: #262835;
+
+    color: white;
+    margin-top: 40px;
+    font-size: 15px;
+
+
+}
+
+.post_list_title{
+    border-bottom: 1px solid orangered;
+    text-transform: uppercase;
+    padding: 40px;
+
+    text-align: center;
+    font-family: 'Kaushan Script', sans-serif;
+    font-size: 40px;
+    color: coral;
+
+}
+
+.post_list_container{
+    margin: 0 auto;
+    width: 100%;
+    max-width: 800px;
+}
+
+.post_article{
+    margin: 0 auto 50px;
+
+    padding: 20px 20px;
+    box-sizing: border-box;
+    border: 3px solid white;
+    border-radius: 20px;
+}
+
+.post_article:last-child{
+    margin: 0 auto 30px;
+}
+
+.post_title{
+    font-size: 25px;
+    color: coral;
+    margin: 0 40px;
+
+}
+
+#post_title{
+    text-decoration: None;
+}
+
+.post_content{
+    font-size: 20px;
+}
+
+.post_time{
+    font-size: 18px;
+    text-align: right;
+}
+
+.post_like{
+    font-weight: bold;
+    text-align: right;
+}
+
+
+/* other */
+
+.post_single{
+    margin-top: 100px;
+    text-align: center;
+}
+
+#single_post_delete{
+    margin: 0 auto;
+    width: 100%;
+    max-width: 140px;
+    display: flex;
+    justify-content: center;
+}
+
+#reset_all_id{
+
+    margin: 0 auto 30px;
+    background-color: #333545;
+
+    font-size: 25px;
+    font-family: 'Montserrat', sans-serif;
+
+    width: 100%;
+    max-width: 800px;
+    padding: 5px 5px;
+    box-sizing: border-box;
+    border: 3px solid #333545;
+    border-radius: 10px;
+
+    transition: background .1s linear,
+    color .1s linear;
+}
+
+#reset_all_id:hover{
+    background-color: #262835;
+    color: white;
+}
+
+.creat_new_post{
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    color: coral;
+    text-decoration: None;
+    margin: 0 200px 30px 0;
+
+    width: 100%;
+    max-width: 800px;
+    padding: 5px 5px;
+    box-sizing: border-box;
+    border: 3px solid #262835;
+    border-radius: 10px;
+
+    transition: background .1s linear,
+    color .1s linear;
+}
+
+.creat_new_post:hover{
+    background-color: white;
+    color: #262835;
+}
+
+/* single post page */
+
+.single_post_title{
+    font-size: 45px;
+    font-family: 'Kaushan Script', cursive;
+    color: coral;
+}
+
+.update_title{
+    font-size: 40px;
+    font-family: 'Kaushan Script', cursive;
+    color: coral;
+}
+
+#update_button{
+    margin: 0 110px 30px;
+}
+
+/*textarea{*/
+/*    width: 100%;*/
+/*    max-width: 500px;*/
+/*    hight: 100%;*/
+
+/*}*/

@@ -1,0 +1,34 @@
+{% extends "_base.html" %}
+
+{% block intro %}
+<div class="intro">
+    <div class="container">
+        <div class="intro_inner">
+            <h2 class="blog_title">It's blog, welcome!</h2>
+
+            <div class="container_form">
+                <form action="{% url "new" %}" method="post">
+                    <p>
+                    <label for="title_id">Title:</label>
+                    <input id="title_id" name="title" type="text">
+                    </p>
+
+                    <p>
+                    <label for="content_id">Content:</label>
+                    <textarea id="content_id" name="content"></textarea>
+                    </p>
+
+                    <p>
+                    <button id="submit_id">Create post</button>
+                    </p>
+                    {% csrf_token %}
+                </form>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

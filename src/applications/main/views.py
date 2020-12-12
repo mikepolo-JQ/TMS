@@ -1,10 +1,13 @@
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.views.generic import TemplateView
 
 
-def index(request):
-    context = {"ico": "g", "page": "index"}
+class IndexView(TemplateView):
 
-    payload = render(request, "main/index.html", context=context)
+    template_name = "main/index.html"
 
-    return HttpResponse(payload)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+
+        context.update({"ico": "g", "page": "index"})
+
+        return context

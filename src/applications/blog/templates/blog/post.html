@@ -1,0 +1,26 @@
+{% extends "_base.html" %}
+
+{% block intro %}
+
+<div class="posts">
+    <div class="container">
+
+            <article class="post_single">
+                <h2 class="single_post_title">{{ object.title }}</h2>
+                <p class="post_content">{{ object.content }}</p>
+                <p class="post_time">{{ object.created_at }}</p>
+                <p class="post_like">Likes: {{ object.nr_like }}</p>
+
+
+                <form method="get" action="{% url "update_page" object.pk %}">
+                    {% csrf_token %}
+                    <button id="update_button" type="submit">Update post</button>
+                </form>
+
+
+            </article>
+
+    </div>
+</div>
+
+{% endblock %}

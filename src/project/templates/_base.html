@@ -20,6 +20,8 @@
                 {% static 'styles/hello_styles.css' %}
             {% elif page == "not_found" %}
                 {% static 'styles/error_styles.css' %}
+            {% elif page == "blog" %}
+                {% static 'styles/blog_styles.css' %}
             {% endif %}
         ">
 
@@ -37,7 +39,7 @@
                         <a class="nav__link" href="/e/">Error</a>
                         <a class="nav__link" href="/hello/">Hello</a>
                         <a class="nav__link" href="/work">Work</a>
-                        <a class="nav__link" href="/block">Block</a>
+                        <a class="nav__link" href="/blog/">Blog</a>
                         <a class="nav__link" href="/contact">Contact</a>
                     </nav>
                 </div>
