@@ -1,5 +1,16 @@
 {% extends "_base.html" %}
 
+{% load static %}
+{% block styles_and_ico %}
+<link type="image/x-icon" rel="shortcut icon"
+      href="{% static "icons/favicon_red.ico" %}">
+
+<link rel="stylesheet" href="
+                {% static 'styles/error_styles.css' %}">
+{% endblock %}
+
+
+
 {% block intro %}
 <div class="intro">
     <div class="container">

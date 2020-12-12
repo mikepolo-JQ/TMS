@@ -1,5 +1,15 @@
 {% extends "_base.html" %}
 
+{% load static %}
+
+{% block styles_and_ico %}
+<link type="image/x-icon" rel="shortcut icon" href="
+          {% static "icons/favicon.ico" %}">
+
+<link rel="stylesheet" href="
+        {% static 'styles/blog_styles.css' %}">
+{% endblock %}
+
 {% block intro %}
 <div class="intro">
     <div class="container">
@@ -17,6 +27,8 @@
                     <label for="content_id">Content:</label>
                     <textarea id="content_id" name="content"></textarea>
                     </p>
+
+                    <input type="hidden" name="author_id" value="{{ user.id }}">
 
                     <p>
                     <button id="submit_id">Create post</button>

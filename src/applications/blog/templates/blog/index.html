@@ -1,33 +1,62 @@
 {% extends "_base.html" %}
 
+{% load static %}
+
+{% block styles_and_ico %}
+<link type="image/x-icon" rel="shortcut icon" href="
+          {% static "icons/favicon.ico" %}">
+
+<link rel="stylesheet" href="
+        {% static 'styles/blog_styles.css' %}">
+{% endblock %}
+
+
 {% block intro %}
 
 <div class="posts">
     <div class="container">
-        <h2 class="post_list_title">welcome to the blog!</h2>
+        <h2 class="post_list_title">welcome to the blog, {{ user }}!</h2>
+
+
+        <form method="post" action="/admin/login/">
+            <button id="single_post_delete" type="submit">Log in</button>
+            {% csrf_token %}
+        </form>
+        <form method="post" action="/admin/logout/">
+            <button id="single_post_delete" type="submit">Log out</button>
+            {% csrf_token %}
+        </form>
 
 
         <div class="post_list_container">
 
+        {% if not user.is_anonymous %}
         <a class="creat_new_post" href="{% url "new" %}">Create new post</a>
+        {% endif %}
+
         {% for post in object_list %}
             <article class="post_article">
                 <a id="post_title" href="/blog/post/{{ post.pk }}"><h2 class="post_title">{{ post.title }}</h2></a>
                 <p class="post_content">{{ post.content }}</p>
-                <p class="post_time">{{ post.created_at }}</p>
+                <p class="post_time">{{ post.created_at }} / {{ post.author.email }}</p>
                 <p class="post_like">Likes: {{ post.nr_like }}</p>
 
+                {% if user.email == post.author.email or user.is_superuser %}
                 <form method="post" action="{% url "delete_one" post.pk %}">
                     <button id="single_post_delete" type="submit">Delete post</button>
                 </form>
+                {% endif %}
+
 
             </article>
         {% endfor %}
 
+        {% if user.is_superuser %}
         <form action="{% url "delete_all" %}" method="post" >
             <button id="reset_all_id">Reset all posts</button>
             {% csrf_token %}
         </form>
+        {% endif %}
 
         </div>
     </div>

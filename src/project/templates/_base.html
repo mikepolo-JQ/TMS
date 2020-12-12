@@ -5,25 +5,8 @@
     <head>
         <title>mikepolo site</title>
         <meta charset="utf-8">
-        <link type="image/x-icon" rel="shortcut icon" href="
-            {% if ico == "r" %}
-                {% static "icons/favicon_red.ico" %}
-            {% else %}
-                {% static "icons/favicon.ico" %}
-            {% endif %}
-        ">
 
-        <link rel="stylesheet" href="
-            {% if page == "index" %}
-                {% static 'styles/styles.css' %}
-            {% elif page == "hello" %}
-                {% static 'styles/hello_styles.css' %}
-            {% elif page == "not_found" %}
-                {% static 'styles/error_styles.css' %}
-            {% elif page == "blog" %}
-                {% static 'styles/blog_styles.css' %}
-            {% endif %}
-        ">
+        {% block styles_and_ico %}{% endblock %}
 
         <link href="https://fonts.googleapis.com/css2?
         family=Kaushan+Script&family=Montserrat:wght@400;700&display=swap"

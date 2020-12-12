@@ -68,4 +68,5 @@ urlpatterns = [
     path("hello/", include("applications.hello.urls"), name="hello"),
     path("e/", make_error),
     path("blog/", include("applications.blog.urls"), name="blog"),
+    path("o/", include("applications.onboarding.urls")),
 ]

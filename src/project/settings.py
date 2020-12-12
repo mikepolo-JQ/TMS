@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 
 import dj_database_url
+from django.urls import reverse_lazy
 from dynaconf import settings as _ds
 
 DIR_SRC = Path(__file__).resolve().parent.parent
@@ -32,6 +33,7 @@ INSTALLED_APPS = [
     "applications.main.apps.LandingConfig",
     "applications.hello.apps.HelloConfig",
     "applications.blog.apps.BlogConfig",
+    "applications.onboarding.apps.OnboardingConfig",
 ]
 
 MIDDLEWARE = [
@@ -39,7 +41,7 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
+    # "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -91,6 +93,12 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
+if DEBUG:
+    AUTH_PASSWORD_VALIDATORS = []
+
+LOGIN_URL = reverse_lazy("onboarding:sign-in")
+LOGIN_REDIRECT_URL = reverse_lazy("main:index")
 
 
 # Internationalization

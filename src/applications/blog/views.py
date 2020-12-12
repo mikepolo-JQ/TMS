@@ -32,6 +32,12 @@ class MakeNewPost(CreateView):
         context.update({"ico": "g", "page": "blog"})
         return context
 
+    def form_valid(self, form):
+        post = form.save(commit=False)
+        post.author = self.request.user
+
+        return super().form_valid(form)
+
 
 class DeleteAllPost(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
