@@ -19,7 +19,7 @@ class HelloView(FormView):
         name = self.request.session.get("name")
         address = self.request.session.get("address")
 
-        context.update({"ico": "g", "page": "hello", "name": name, "address": address})
+        context.update({"name": name, "address": address})
         return context
 
     def form_valid(self, form):

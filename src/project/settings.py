@@ -30,10 +30,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # -------------------------------------
-    "applications.main.apps.LandingConfig",
+    "applications.main.apps.MainConfig",
     "applications.hello.apps.HelloConfig",
     "applications.blog.apps.BlogConfig",
-    "applications.onboarding.apps.OnboardingConfig",
+    "applications.onboarding.apps.OnboardingConfig"
 ]
 
 MIDDLEWARE = [
@@ -98,7 +98,7 @@ if DEBUG:
     AUTH_PASSWORD_VALIDATORS = []
 
 LOGIN_URL = reverse_lazy("onboarding:sign-in")
-LOGIN_REDIRECT_URL = reverse_lazy("main:index")
+LOGIN_REDIRECT_URL = "/"
 
 
 # Internationalization

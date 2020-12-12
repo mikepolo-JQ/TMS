@@ -1,5 +1,15 @@
 {% extends "_base.html" %}
 
+{% load static %}
+
+{% block styles_and_ico %}
+<link type="image/x-icon" rel="shortcut icon" href="
+          {% static "icons/favicon.ico" %}">
+
+<link rel="stylesheet" href="
+        {% static 'styles/onboarding_styles.css' %}">
+{% endblock %}
+
 {% block intro %}
   <p>You have been signed out.</p>
 {% endblock %}

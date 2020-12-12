@@ -2,7 +2,7 @@ body{
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
-    color: #333333;
+    color: #333;
 }
 
 *,
@@ -116,6 +116,12 @@ body{
     text-decoration: None;
 }
 
+.user{
+    font-weight: bold;
+    color: white;
+}
+
+
 /* NAV */
 .nav{
     font-size: 14px;
@@ -132,6 +138,26 @@ body{
     text-decoration: None;
 
     transition: color .2s linear;
+}
+
+.span_nav_sign{
+    padding: 8px 15px;
+    box-sizing: border-box;
+    border: 3px solid white;
+    border-radius: 50px;
+    background-color: #00a2e8;
+}
+
+.nav_sign{
+    color: #fff;
+    font-weight: bold;
+    text-decoration: None;
+
+    transition: color .2s linear;
+}
+
+.nav_sign:hover{
+    color: #262835;
 }
 
 .nav__link:after{

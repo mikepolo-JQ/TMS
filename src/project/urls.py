@@ -19,8 +19,6 @@ def view_not_found(request, exception, template_name=ERROR_404_TEMPLATE_NAME):
     url = request.path
     pin = randint(1, 1000)
     context = {
-        "ico": "r",
-        "page": "not_found",
         "url": url,
         "pin": pin,
         "request_headers": request.headers,
@@ -64,9 +62,9 @@ def make_error(_request):
 
 urlpatterns = [
     path("admin/", admin.site.urls, name="admin"),
-    path("", include("applications.main.urls"), name="index"),
+    path("", include("applications.main.urls"), name="main"),
     path("hello/", include("applications.hello.urls"), name="hello"),
     path("e/", make_error),
     path("blog/", include("applications.blog.urls"), name="blog"),
-    path("o/", include("applications.onboarding.urls")),
+    path("o/", include("applications.onboarding.urls"), name="onboarding"),
 ]

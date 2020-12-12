@@ -12,21 +12,9 @@ from django.views.generic import FormView
 class SignInView(LoginView):
     template_name = "onboarding/sign-in.html"
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data()
-
-        context.update({"ico": "g", "page": "blog"})
-        return context
-
 
 class SignOutView(LogoutView):
     template_name = "onboarding/signed-out.html"
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data()
-
-        context.update({"ico": "g", "page": "blog"})
-        return context
 
 
 User = get_user_model()
@@ -34,7 +22,7 @@ User = get_user_model()
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField()
-    username = forms.CharField(max_length=100)
+    username = forms.CharField(max_length=50)
 
     class Meta:
         model = User
@@ -48,14 +36,8 @@ class SignUpForm(UserCreationForm):
 
 class SignUpView(FormView):
     form_class = SignUpForm
-    success_url = reverse_lazy("main:index")
+    success_url = "/"
     template_name = "onboarding/sign-up.html"
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data()
-
-        context.update({"ico": "g", "page": "blog"})
-        return context
 
     def form_valid(self, form):
         form.save()

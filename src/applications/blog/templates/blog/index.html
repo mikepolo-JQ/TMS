@@ -17,17 +17,6 @@
     <div class="container">
         <h2 class="post_list_title">welcome to the blog, {{ user }}!</h2>
 
-
-        <form method="post" action="/admin/login/">
-            <button id="single_post_delete" type="submit">Log in</button>
-            {% csrf_token %}
-        </form>
-        <form method="post" action="/admin/logout/">
-            <button id="single_post_delete" type="submit">Log out</button>
-            {% csrf_token %}
-        </form>
-
-
         <div class="post_list_container">
 
         {% if not user.is_anonymous %}
@@ -46,7 +35,6 @@
                     <button id="single_post_delete" type="submit">Delete post</button>
                 </form>
                 {% endif %}
-
 
             </article>
         {% endfor %}

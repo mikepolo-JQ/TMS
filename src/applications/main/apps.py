@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 
 
-class LandingConfig(AppConfig):
+class MainConfig(AppConfig):
     # name = 'main'
-    lable = "main"
-    name = f"applications.{lable}"
+    label = "main"
+    name = f"applications.{ label }"

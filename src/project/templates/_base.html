@@ -5,6 +5,7 @@
     <head>
         <title>mikepolo site</title>
         <meta charset="utf-8">
+{#        <link rel="stylesheet" href="{% static 'styles/_base_styles.css' %}">#}
 
         {% block styles_and_ico %}{% endblock %}
 
@@ -24,8 +25,27 @@
                         <a class="nav__link" href="/work">Work</a>
                         <a class="nav__link" href="/blog/">Blog</a>
                         <a class="nav__link" href="/contact">Contact</a>
+
+                        {% if not user.is_authenticated %}
+                        <span class="span_nav_sign">
+                            <a class="nav_sign" href="{% url "onboarding:sign-in" %}">Log In</a>
+                            <span style="color: white"> | </span>
+                            <a class="nav_sign" href="{% url "onboarding:sign-up" %}">Sign Up</a>
+                        </span>
+                        {% else %}
+                        <span class="span_nav_sign">
+                            <a class="nav_sign" href="{% url "onboarding:sign-out" %}">Sign Out</a>
+                        </span>
+                        {% endif %}
+
                     </nav>
+
                 </div>
+
+                {% if user.is_authenticated %}
+                <div class="user">{{ user.username }} | {{ user.email }}</div>
+                {% endif %}
+
             </div>
         </div>
 
