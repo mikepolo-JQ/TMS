@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     "applications.main.apps.MainConfig",
     "applications.hello.apps.HelloConfig",
     "applications.blog.apps.BlogConfig",
-    "applications.onboarding.apps.OnboardingConfig"
+    "applications.onboarding.apps.OnboardingConfig",
 ]
 
 MIDDLEWARE = [

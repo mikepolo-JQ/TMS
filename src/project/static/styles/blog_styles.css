@@ -117,8 +117,6 @@ button:hover{
     color: white;
     margin-top: 40px;
     font-size: 15px;
-
-
 }
 
 .post_list_title{
@@ -130,6 +128,8 @@ button:hover{
     font-family: 'Kaushan Script', sans-serif;
     font-size: 40px;
     color: coral;
+
+    margin-bottom: 30px;
 
 }
 

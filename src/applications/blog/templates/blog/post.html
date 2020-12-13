@@ -22,7 +22,7 @@
                 <p class="post_time">{{ object.created_at }}</p>
                 <p class="post_like">Likes: {{ object.nr_like }}</p>
 
-                {% if user.email == object.author.email or user.is_superuser %}
+                {% if user == object.author or user.is_superuser %}
                 <form method="get" action="{% url "update_page" object.pk %}">
                     {% csrf_token %}
                     <button id="update_button" type="submit">Update post</button>
