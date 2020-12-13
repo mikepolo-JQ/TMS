@@ -5,7 +5,7 @@
     <head>
         <title>mikepolo site</title>
         <meta charset="utf-8">
-{#        <link rel="stylesheet" href="{% static 'styles/_base_styles.css' %}">#}
+        <link rel="stylesheet" href="{% static 'styles/_base_styles.css' %}">
 
         {% block styles_and_ico %}{% endblock %}
 
@@ -29,7 +29,7 @@
                         {% if not user.is_authenticated %}
                         <span class="span_nav_sign">
                             <a class="nav_sign" href="{% url "onboarding:sign-in" %}">Log In</a>
-                            <span style="color: white"> | </span>
+                            <span style="color: white; font-weight: bold"> | </span>
                             <a class="nav_sign" href="{% url "onboarding:sign-up" %}">Sign Up</a>
                         </span>
                         {% else %}
