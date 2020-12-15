@@ -23,6 +23,9 @@ psycopg2-binary = "*"
 whitenoise = "*"
 dj-database-url = "*"
 sentry-sdk = "*"
+python-social-auth = "==0.2.12"
+social-auth-app-django = "*"
+django-allauth = "*"
 
 [requires]
 python_version = "3.8"

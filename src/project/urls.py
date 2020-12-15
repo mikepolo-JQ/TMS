@@ -39,8 +39,6 @@ def handle_error(request, template_name=ERROR_500_TEMPLATE_NAME):
     error_class, error, tb = sys.exc_info()
 
     context = {
-        "ico": "r",
-        "page": "not_found",
         "traceback": traceback.walk_tb(tb),
         "HOST": _ds.HOST,
         "error_name": error_class.__name__,
@@ -67,4 +65,5 @@ urlpatterns = [
     path("e/", make_error),
     path("blog/", include("applications.blog.urls"), name="blog"),
     path("o/", include("applications.onboarding.urls"), name="onboarding"),
+    path("accounts/", include("allauth.urls")),
 ]

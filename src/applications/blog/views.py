@@ -1,10 +1,12 @@
 from django.urls import reverse_lazy
+from django.views import View
 from django.views.generic import CreateView
 from django.views.generic import DeleteView
 from django.views.generic import DetailView
 from django.views.generic import ListView
 from django.views.generic import RedirectView
 from django.views.generic import UpdateView
+from django.http import HttpResponse, JsonResponse
 
 from applications.blog.models import Post
 
@@ -56,3 +58,22 @@ class DeleteSinglePost(DeleteView):
     http_method_names = ["post"]
     model = Post
     success_url = reverse_lazy("index")
+
+
+class LikePost(View):
+    def post(self, request, *args, **kwargs):
+        payload = {"ok": False, "nr_likes": 0, "reason": "unknown reason"}
+
+        pk = self.kwargs.get("pk")
+        post = Post.objects.get(pk=pk)
+        if post:
+            post.nr_like += 1
+            post.save()
+            post = Post.objects.get(pk=pk)
+
+            payload.update({"ok": True, "nr_likes": post.nr_like, "reason": None})
+        else:
+            payload.update({"reason": "post not fount"})
+
+        return JsonResponse(payload)
+
