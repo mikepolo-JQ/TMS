@@ -14,5 +14,7 @@ class Post(models.Model):
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    who_likes = models.ManyToManyField(User, related_name="user_like")
+
     class Meta:
         ordering = ["-created_at"]

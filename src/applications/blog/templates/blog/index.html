@@ -30,8 +30,8 @@
                 <p class="post_content">{{ post.content }}</p>
                 <p class="post_time">{{ post.created_at }} / {{ post.author.email }}</p>
 
-                <span class="post_like">Likes:
-                    <button onclick="like(this, {{ post.pk }});">{{ post.nr_like }}</button></span>
+                <span class="post_like" onclick="like(this, {{ post.pk }});">
+                    Likes: {{ post.nr_like }}</span>
 
                 {% if user == post.author or user.is_superuser %}
                 <form method="post" action="{% url "delete_one" post.pk %}">

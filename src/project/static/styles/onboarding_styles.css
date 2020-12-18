@@ -1,7 +1,5 @@
 body{
-    background: #262835
-    center
-    no-repeat;
+    background: linear-gradient(to bottom, black, #00a2e8);
     color: #fff
 }
 
@@ -57,8 +55,8 @@ label{
 }
 
 input{
-    background-color: #262835;
-    color: white;
+    /*background-color: #262835;*/
+    color: #262835;
     width: 100%;
     font-size: 20px;
 
@@ -67,13 +65,14 @@ input{
     box-sizing: border-box;
     border: none;
     border-bottom: 2px solid white;
+    border-radius: 20px;
 }
 
 button{
     margin: 0 auto;
-    background-color: #262835;
-    color: white;
 
+    color: white;
+    background: transparent;
     font-size: 15px;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
@@ -122,3 +121,19 @@ button:hover{
 .form-field{
     margin-bottom: 10px;
 }
+
+a.provider_google{
+    padding-top: 30px;
+    /*text-decoration: none;*/
+
+    /*background-color: red;*/
+    /*box-sizing: border-box;*/
+    /*border: 3px solid white;*/
+    /*padding: 10px 10px;*/
+    /*border-radius: 10px;*/
+}
+
+/*.provider_google:hover{*/
+/*    color: red;*/
+/*    background-color: white;*/
+/*}*/

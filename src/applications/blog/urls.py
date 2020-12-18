@@ -21,9 +21,5 @@ urlpatterns = [
         csrf_exempt(views.DeleteSinglePost.as_view()),
         name="delete_one",
     ),
-    path(
-        "post/<int:pk>/like/",
-        csrf_exempt(views.LikePost.as_view()),
-        name="likes"
-    )
+    path("post/<int:pk>/like/", csrf_exempt(views.LikePost.as_view()), name="likes"),
 ]

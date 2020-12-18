@@ -38,6 +38,9 @@
                 {% csrf_token %}
                 <input name="next" type="hidden" value="{{ next }}">
               </form>
+            <a title="Google" class="provider_google"
+               href="/accounts/google/login/?process=login">
+                <img height="50px" width="50px"  src="{% static "img/google_logo.png" %}"></a>
             </article>
           {% endif %}
         </div>
