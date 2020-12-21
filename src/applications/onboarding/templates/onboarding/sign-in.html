@@ -7,7 +7,7 @@
           {% static "icons/favicon.ico" %}">
 
 <link rel="stylesheet" href="
-        {% static 'styles/onboarding_styles.css' %}">
+        {% static 'onboarding/styles/onboarding_styles.css' %}">
 {% endblock %}
 
 {% block intro %}
@@ -40,7 +40,9 @@
               </form>
             <a title="Google" class="provider_google"
                href="/accounts/google/login/?process=login">
-                <img height="50px" width="50px"  src="{% static "img/google_logo.png" %}"></a>
+                <img height="50px" width="50px"  src="{% static "onboarding/img/google_logo.png" %}">
+            </a>
+
             </article>
           {% endif %}
         </div>

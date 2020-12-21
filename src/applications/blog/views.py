@@ -9,7 +9,6 @@ from django.views.generic import ListView
 from django.views.generic import RedirectView
 from django.views.generic import UpdateView
 
-
 from applications.blog.models import Post
 
 
@@ -64,25 +63,47 @@ class DeleteSinglePost(DeleteView):
 
 class LikePost(View):
     def post(self, request, *args, **kwargs):
-        payload = {"ok": False, "nr_likes": 0, "reason": "unknown reason"}
-        pk = self.kwargs.get("pk")
+
         user = self.request.user
-        if user.is_anonymous:
-            return JsonResponse({"reason": "you is anon"})
-        post = Post.objects.filter(pk=pk, who_likes=user)
+
+        # if user.is_anonymous:
+        #     return JsonResponse({"reason": "you anon"})
+
+        payload = {"ok": False, "nr_likes": 0, "reason": "unknown reason"}
+
+        pk = self.kwargs.get("pk", 0)
+        post = Post.objects.filter(pk=pk).first()
 
         if not post:
-            post = Post.objects.get(pk=pk)
-
-            post.who_likes.add(user)
-            post.save()
-
-            post.nr_like += 1
-            post.save()
-            post = Post.objects.get(pk=pk)
-
-            payload.update({"ok": True, "nr_likes": post.nr_like, "reason": None})
+            payload.update({"reason": "post not found"})
+        elif post.author == user:
+            payload.update({"reason": "don't like your own posts"})
         else:
-            payload.update({"reason": "post not found or you have liked it before"})
+            if post.is_liked_by(user):
+                post.who_likes.remove(user)
+            else:
+                post.who_likes.add(user)
+            post.save()
+
+            post = Post.objects.get(pk=pk)
+            payload.update({"ok": True, "nr_likes": post.nr_likes, "reason": None})
+
+        return JsonResponse(payload)
+
+
+class LikeColorPost(View):
+    def post(self, request, *args, **kwargs):
+        payload = {"ok": False}
+        list_pk = [post.pk for post in Post.objects.all()]
+
+        my_list = []
+        for pk in list_pk:
+            post = Post.objects.get(pk=pk)
+
+            if post.is_liked_by(self.request.user):
+                my_list.append(pk)
+                payload.update({"ok": True})
+
+        payload.update({"posts_id": my_list})
 
         return JsonResponse(payload)

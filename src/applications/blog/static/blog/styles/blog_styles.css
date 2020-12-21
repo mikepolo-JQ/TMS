@@ -173,9 +173,29 @@ button:hover{
 }
 
 .post_like{
-    font-weight: bold;
-    text-align: right;
+    display: flex;
+    justify-content: right;
+    cursor: pointer;
 }
+
+.nr_likes{
+    margin-left: 5px;
+}
+
+
+.like_button_ico{
+    background-image: url("/static/blog/image/likes/no_like.png");
+    color: transparent;
+    background-repeat: no-repeat;
+}
+
+.like_red{
+    color: transparent;
+    background-image: url("/static/blog/image/likes/like.png");
+    background-repeat: no-repeat;
+}
+
+
 
 
 /* other */

@@ -10,11 +10,22 @@ class Post(models.Model):
     title = models.TextField(null=True, blank=True, unique=True)
     content = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(default=datetime.now)
-    nr_like = models.IntegerField(default=0)
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    who_likes = models.ManyToManyField(User, related_name="user_like")
+    who_likes = models.ManyToManyField(User, related_name="user_like", blank=True)
+
+    @property
+    def nr_likes(self):
+        return self.who_likes.count()
+
+    def is_liked_by(self, user) -> bool:
+        return Post.objects.filter(pk=self.pk, who_likes=user).exists()
+
+    @property
+    def all_post_pk(self):
+        posts_pk = [post.pk for post in Post.objects.all()]
+        return posts_pk
 
     class Meta:
         ordering = ["-created_at"]

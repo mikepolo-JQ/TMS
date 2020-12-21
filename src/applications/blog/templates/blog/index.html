@@ -7,7 +7,14 @@
           {% static "icons/favicon.ico" %}">
 
 <link rel="stylesheet" href="
-        {% static 'styles/blog_styles.css' %}">
+        {% static 'blog/styles/blog_styles.css' %}">
+
+<script src="{% static "blog/scripts/likes.js" %}"></script>
+
+<script>
+    window.onload = like_color();
+</script>
+
 {% endblock %}
 
 
@@ -30,8 +37,12 @@
                 <p class="post_content">{{ post.content }}</p>
                 <p class="post_time">{{ post.created_at }} / {{ post.author.email }}</p>
 
-                <span class="post_like" onclick="like(this, {{ post.pk }});">
-                    Likes: {{ post.nr_like }}</span>
+                {% if user != post.author %}
+                    <a class="post_like" onclick="like(this, {{ post.pk }});">
+                        <div id="post_{{ post.pk }}" class="like_button_ico">........</div>
+                        <div class="nr_likes">{{ post.nr_like }}</div>
+                    </a>
+                {% endif %}
 
                 {% if user == post.author or user.is_superuser %}
                 <form method="post" action="{% url "delete_one" post.pk %}">
