@@ -15,6 +15,8 @@ class Post(models.Model):
 
     who_likes = models.ManyToManyField(User, related_name="user_like", blank=True)
 
+    nr_views = models.IntegerField(default=0)
+
     @property
     def nr_likes(self):
         return self.who_likes.count()

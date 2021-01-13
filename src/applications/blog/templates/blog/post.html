@@ -21,6 +21,7 @@
                 <p class="post_content">{{ object.content }}</p>
                 <p class="post_time">{{ object.created_at }}</p>
                 <p class="post_like">Likes: {{ object.nr_like }}</p>
+                <span class="post_views">views : {{ object.nr_views }}</span>
 
                 {% if user == object.author or user.is_superuser %}
                 <form method="get" action="{% url "update_page" object.pk %}">

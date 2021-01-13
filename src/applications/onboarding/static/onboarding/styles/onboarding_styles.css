@@ -14,6 +14,17 @@ body{
     background-size: cover;
 }
 
+.intro_signed-out{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background: black;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
 .nav_sign:hover{
     color: coral;
 }

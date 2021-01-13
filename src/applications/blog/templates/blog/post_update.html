@@ -20,6 +20,7 @@
                 <p class="post_content">{{ object.content }}</p>
                 <p class="post_time">{{ object.created_at }}</p>
                 <p class="post_like">Likes: {{ object.nr_like }}</p>
+                <span class="post_views">views : {{ post.nr_views }}</span>
 
                 <div class="container_form">
                 <form method="post" action="{% url "update" object.pk %}">
